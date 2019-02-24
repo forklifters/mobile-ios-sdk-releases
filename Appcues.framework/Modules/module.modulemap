@@ -1,0 +1,11 @@
+framework module Appcues {
+  umbrella header "Appcues.h"
+
+  export *
+  module * { export * }
+}
+
+module Appcues.Swift {
+    header "Appcues-Swift.h"
+    requires objc
+}
