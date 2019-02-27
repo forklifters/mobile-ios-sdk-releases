@@ -1,0 +1,4 @@
+*.framework linguist-vendored
+*.podspec linguist-generated
+LICENSE linguist-documentation
+README.md linguist-documentation
