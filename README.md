@@ -4,8 +4,8 @@
 [![ios 9+](https://img.shields.io/badge/iOS-9%2B-lightgrey.svg)](https://swift.org)
 [![xcode 10.1](https://img.shields.io/badge/Xcode-10.1%2B-blue.svg)](https://swift.org)
 ![cocoapods](https://img.shields.io/cocoapods/v/Appcues.svg)
+[![carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![license](https://img.shields.io/cocoapods/l/Appcues.svg)
-[![tests](https://app.bitrise.io/app/156d3d483952dfb9/status.svg?token=fqKNRwYACUlwJGHPMNe3Dg&branch=master)](https://app.bitrise.io/app/156d3d483952dfb9)
 
 # Appcues iOS SDK Releases
 
@@ -60,7 +60,7 @@ These instructions will setup your local CocoaPods environment and import Appcue
 
 #### Carthage Installation
 
-[Carthage](https://github.com/Carthage/Carthage) is an alternative dependency management system that we support via the Carthage [binary json spec](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md). To install via Carthage, add a `Cartfile` to your project with these contents:
+[Carthage](https://github.com/Carthage/Carthage) is an alternative dependency management system that we support via the Carthage [binary json spec](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#binary-project-specification). To install via Carthage, add a `Cartfile` to your project with these contents:
 
 ```sh
 binary "https://raw.githubusercontent.com/appcues/ios-sdk-releases/master/Appcues.framework.json"
@@ -279,7 +279,7 @@ override func viewDidAppear(_ animated: Bool) {
 }
 ```
 
-<i>Objc</i>
+<i>Objective-C</i>
 ```objective-c
 @import Appcues;
 
@@ -308,7 +308,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-<i>Objc</i>
+<i>Objective-C</i>
 ```objective-c
 @import Appcues;
 
@@ -332,7 +332,7 @@ The targeting of your flows can be strengthened by enabling tracking of your use
 
 One example would be an auction app that wishes to show a message of congratulations after a user creates their first auction:
 
-<i>Swift </i>
+<i>Swift</i>
 ```swift
 import Appcues
 
@@ -343,7 +343,7 @@ func createAuction() {
 }
 ```
 
-<i>Objc </i>
+<i>Objective-C</i>
 ```objective-c
 @import Appcues;
 
