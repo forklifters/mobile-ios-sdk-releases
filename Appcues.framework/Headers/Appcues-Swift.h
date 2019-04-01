@@ -187,7 +187,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class AppcuesUser;
 @class AppcuesEvent;
 @class UIViewController;
-enum AppcuesLogLevel : NSInteger;
 
 SWIFT_CLASS("_TtC7Appcues7Appcues")
 @interface Appcues : NSObject
@@ -211,7 +210,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Appcues * _N
 - (void)setupWithKeyWindow:(UIWindow * _Nonnull)keyWindow;
 /// Launches the <code>Appcues</code> editor which allows capturing screens within your app, sending them to the web editor on
 /// https://beta.my.appcues.com/mobile and previewing them before publishing them to your customers. To log into the
-/// edtior, use the generated login code on the web editor.
+/// editor, use the generated login code on the web editor.
 /// important:
 /// The editor should not be visible to users of your app, so we recommend you removing this call before
 /// deploying your app, or stripping it from a release configuration such as with:
@@ -228,7 +227,7 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Appcues * _N
 ///
 - (void)identifyWithUser:(AppcuesUser * _Nonnull)user;
 /// Identifies an “anonymous” <code>AppcuesUser</code>. This user is identified via the device’s
-/// <code>UIDevice.current.identifierForVendor</code> which will change when a real user reinstalls an app.
+/// <code>UIDevice.current.identifierForVendor</code> which will change when a real user re-installs an app.
 - (void)anonymous;
 /// Tracks the given list of <code>AppcuesEvent</code>s so that they can be used for flow targeting.
 /// \param events List of <code>AppcuesEvent</code>s to track, each identified by a name and optional custom attributes.
@@ -240,15 +239,6 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Appcues * _N
 /// \param name The <code>UIViewController</code>’s screen name
 ///
 - (void)showEligibleFlowsOnViewController:(UIViewController * _Nonnull)viewController named:(NSString * _Nonnull)name;
-/// Enables console logging for the SDK. Set the <code>logLevel</code> to <code>.debug</code> to print error logs for debugging.
-/// important:
-/// Don’t deploy an app with an <code>AppcuesLogLevel</code> of <code>.debug</code>. By default the SDK performs no logging
-/// that is printed to the console, but enabling <code>.debug</code> logging in a deployed app will make this information
-/// accessible by end users via device logs.
-/// \param logLevel The <code>AppcuesLogLevel</code> to use for logging. Default is <code>.none</code>. Use <code>.debug</code> to enable
-/// console logging.
-///
-- (void)updateWithLogLevel:(enum AppcuesLogLevel)logLevel;
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
@@ -256,19 +246,15 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) Appcues * _N
 SWIFT_CLASS("_TtC7Appcues12AppcuesEvent")
 @interface AppcuesEvent : NSObject
 - (nonnull instancetype)initWithName:(NSString * _Nonnull)name attributes:(NSDictionary<NSString *, id> * _Nonnull)attributes OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");
 @end
 
-typedef SWIFT_ENUM(NSInteger, AppcuesLogLevel, closed) {
-  AppcuesLogLevelNone = 0,
-  AppcuesLogLevelDebug = 1,
-};
-
 
 SWIFT_CLASS("_TtC7Appcues11AppcuesUser")
 @interface AppcuesUser : NSObject
-- (nonnull instancetype)initWithId:(NSString * _Nonnull)id attributes:(NSDictionary<NSString *, id> * _Nullable)attributes OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithId:(NSString * _Nonnull)id attributes:(NSDictionary<NSString *, id> * _Nonnull)attributes OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithId:(NSString * _Nonnull)id;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_DEPRECATED_MSG("-init is unavailable");

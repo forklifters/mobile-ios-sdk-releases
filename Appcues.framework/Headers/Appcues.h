@@ -1,11 +1,3 @@
-//
-//  Appcues.h
-//  Appcues
-//
-//  Created by Yasmin Lindholm on 7/24/18.
-//  Copyright © 2018 appcues. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for Appcues.

@@ -6,6 +6,7 @@
 ![cocoapods](https://img.shields.io/cocoapods/v/Appcues.svg)
 [![carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![license](https://img.shields.io/cocoapods/l/Appcues.svg)
+[![tests](https://app.bitrise.io/app/156d3d483952dfb9/status.svg?token=fqKNRwYACUlwJGHPMNe3Dg&branch=master)](https://app.bitrise.io/app/156d3d483952dfb9)
 
 # Appcues iOS SDK Releases
 
@@ -19,17 +20,24 @@ The Appcues iOS SDK allows iOS app developers to build, publish, and test onboar
 
 In order to use Appcues you must register an account on https://beta.my.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
 
+Before installing Appcues, make sure that you 
+1. [Create and join an Appcues Account](https://appcues.wistia.com/medias/i2ss29oa71)
+2. [Navigate to the Mobile Web Editor](https://appcues.wistia.com/medias/efeq7u4yt7) 
+
 Fully integrating the SDK into your app involves these steps:
 1. [Installation](#Installation)
+    -  [CocoaPods](#CocoaPods-Installation)
+    -  [Carthage](#Carthage-Installation)
+    -  [Manual Installation](#Direct-Framework-Installation)
 2. [Setup Appcues](#Setup-Appcues)
 3. [Identify Users in your App](#Identify-Users-in-your-App)
-4. [Identify Screens in your App](#Identify-Screens-in-your-App)
+4. [Identify Screens in your App](#Show-Flows-in-your-App)
 5. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
+6.  [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
 The following steps are optional: 
 * [Enable Appcues Logs](#Enable-Appcues-Logs)
 * [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
-* [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
 ### Installation
 
@@ -44,9 +52,16 @@ $ sudo gem install cocoapods
 $ pod setup
 ```
 
-Now create a `Podfile` in the root of your project directory and add the following:
+Now create a `Podfile` in the root of your project directory
+
+```sh
+$ pod init
+```
+and add the following to your  `Podfile` :
 
 ```ruby
+use_frameworks!
+
 pod 'Appcues'
 ```
 
@@ -82,7 +97,7 @@ If you wish to install Appcues directly into your application via the binary fra
 
 ...<img width=600 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ManualFrameworkInstall.png" alt="Install Framework" />
 
-2. The framework distribution includes simulator architectures so that you can build and run it in an `iOS Simulator`, but these need to be removed when archiving for submission to iTunesConnect. To do this, a script is included in the framework to strip these architectures, but must be configured on your project so that it runs whenever you buld the app for archive. 
+2. The framework distribution includes simulator architectures so that you can build and run it in an `iOS Simulator`, but these need to be removed when archiving for submission to iTunesConnect. To do this, a script is included in the framework to strip these architectures, but must be configured on your project so that it runs whenever you build the app for archive. 
 
 Add the below script to your target's Build Phases, by selecting your project, then the main app target in the `TARGETS` list, then the `Build Phases` tab, selecting the `+` button, selecting `New Run Script Phase`, and pasting the below code in the script content. Make sure this script is ordered below the `Embedded Frameworks` `Build Phase`.
 
@@ -98,7 +113,9 @@ Once you have finished installing Appcues via CocoaPods or the Framework, you ca
 
 #### Setup Appcues
 
-In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
+In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method. 
+
+You can also watch a video of how to setup Appcues [here](https://appcues.wistia.com/medias/2irgu29cpc).
 
 <i>Swift</i>
 ```swift
@@ -186,7 +203,9 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 #### Identify Users in your App
 
-Users have to be identified to see flows. An `AppcuesUser` must have a unique id, and can have attached custom user attributes. You can find recommendations of additional user attributes to track [here](https://docs.appcues.com/article/410-mobile-user-properties-overview)
+Users have to be identified to see flows. An `AppcuesUser` must have a unique id, and can have attached custom user attributes. You can find recommendations of additional user attributes to track [here](https://docs.appcues.com/article/410-mobile-user-properties-overview).
+
+You can also watch a video of how to do identify users [here](https://appcues.wistia.com/medias/bdooulc8r1).
 
 <i>Swift</i>
 ```swift
@@ -234,7 +253,7 @@ Once a user is identified, the SDK automatically sends some user information to 
 
 *Do not add this call if you already have `Appcues.shared.identify()` implemented.*
 
-Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows aren't targeted to specific users or for initial testing.
+Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows are not targeted to specific users or for initial testing.
 
 <i>Swift</i>
 ```swift
@@ -267,6 +286,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 #### Show Flows in your App
 
 In order for the Appcues SDK to know what screen a user is on and to find all the flows that qualify for that screen, a screen needs to be identified. Add the following code to the screen where you want to check for flows. We recommended adding this code after the view finishes appearing - i.e. the corresponding `UIViewController`'s `viewDidAppear` method.
+
+You can also watch a video of how to do enable flows [here](https://appcues.wistia.com/medias/3hdrm9xfre).
 
 <i>Swift</i>
 ```swift
@@ -326,6 +347,8 @@ Once the Appcues Mobile SDK Editor is launched, it can be seen in the upper righ
 <img height=500
 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues Mobile SDK Editor" />
 
+If you launch the Mobile SDK Editor for the first time, you will be prompted to login. The code can be found in the Mobile Web, more detailed instructions [here](https://appcues.wistia.com/medias/f7hwhvx8in).
+
 #### Send Custom Events to Appcues 
 
 The targeting of your flows can be strengthened by enabling tracking of your users's behaviors and actions. Call the `track(events:)` method whenever an event should be sent to Appcues. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
@@ -356,6 +379,8 @@ func createAuction() {
 #### Add AccessibilityIdentifiers to your App
 
 In order to ensure tooltip placement accuracy, it is highly recommended to add [accessibilityIdentifiers](https://developer.apple.com/documentation/uikit/uiaccessibilityidentification/1623132-accessibilityidentifier) to your views.
+
+You can see a detailed walkthrough of how to add accessibilityIdentifiers to your app [here](https://appcues.wistia.com/medias/kdyikd64q7).
 
 ## Contact
 
