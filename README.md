@@ -1,6 +1,6 @@
 <img width=443 src="https://uploads-ssl.webflow.com/5b227a6bd898e26d54ce18ac/5b76d242d0e5786ec310dd4d_Appcues-Logo-2018-Rebrand.svg" alt="Appcues Logo" />
 
-[![swift](https://img.shields.io/badge/Swift-4.2-orange.svg)](https://developer.apple.com/swift)
+[![swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://developer.apple.com/swift)
 [![ios 9+](https://img.shields.io/badge/iOS-9%2B-lightgrey.svg)](https://swift.org)
 [![xcode 10.1](https://img.shields.io/badge/Xcode-10.1%2B-blue.svg)](https://swift.org)
 ![cocoapods](https://img.shields.io/cocoapods/v/Appcues.svg)
@@ -16,13 +16,13 @@ If you have any questions, comments, or issues related to any products distribut
 
 ## Appcues iOS SDK
 
-The Appcues iOS SDK allows iOS app developers to build, publish, and test onboarding flows, without submitting to the app store. The SDK is a dynamic framework that is compatible with Objective-C and Swift projects that target **iOS 9** and higher, **Xcode 10.1** and higher. 
+The Appcues iOS SDK allows iOS app developers to build, publish, and test onboarding flows, without submitting to the app store. The SDK is a dynamic framework that is compatible with Objective-C and Swift projects that target **iOS 9** and higher, **Xcode 10.1** and higher.
 
 In order to use Appcues you must register an account on https://beta.my.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
 
-Before installing Appcues, make sure that you 
+Before installing Appcues, make sure that you
 1. [Create and join an Appcues Account](https://appcues.wistia.com/medias/i2ss29oa71)
-2. [Navigate to the Mobile Web Editor](https://appcues.wistia.com/medias/efeq7u4yt7) 
+2. [Navigate to the Mobile Web Editor](https://appcues.wistia.com/medias/efeq7u4yt7)
 
 Fully integrating the SDK into your app involves these steps:
 1. [Installation](#Installation)
@@ -35,7 +35,7 @@ Fully integrating the SDK into your app involves these steps:
 5. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
 6.  [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
-The following steps are optional: 
+The following steps are optional:
 * [Enable Appcues Logs](#Enable-Appcues-Logs)
 * [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
 
@@ -97,7 +97,7 @@ If you wish to install Appcues directly into your application via the binary fra
 
 ...<img width=600 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ManualFrameworkInstall.png" alt="Install Framework" />
 
-2. The framework distribution includes simulator architectures so that you can build and run it in an `iOS Simulator`, but these need to be removed when archiving for submission to iTunesConnect. To do this, a script is included in the framework to strip these architectures, but must be configured on your project so that it runs whenever you build the app for archive. 
+2. The framework distribution includes simulator architectures so that you can build and run it in an `iOS Simulator`, but these need to be removed when archiving for submission to iTunesConnect. To do this, a script is included in the framework to strip these architectures, but must be configured on your project so that it runs whenever you build the app for archive.
 
 Add the below script to your target's Build Phases, by selecting your project, then the main app target in the `TARGETS` list, then the `Build Phases` tab, selecting the `+` button, selecting `New Run Script Phase`, and pasting the below code in the script content. Make sure this script is ordered below the `Embedded Frameworks` `Build Phase`.
 
@@ -109,11 +109,11 @@ Build and run your project to verify installation was successful. Once you have 
 
 ### Verifying Appcues Configuration
 
-Once you have finished installing Appcues via CocoaPods or the Framework, you can test your installation by initializing Appcues. 
+Once you have finished installing Appcues via CocoaPods or the Framework, you can test your installation by initializing Appcues.
 
 #### Setup Appcues
 
-In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method. 
+In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
 
 You can also watch a video of how to setup Appcues [here](https://appcues.wistia.com/medias/2irgu29cpc).
 
@@ -349,7 +349,7 @@ src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/Appc
 
 If you launch the Mobile SDK Editor for the first time, you will be prompted to login. The code can be found in the Mobile Web, more detailed instructions [here](https://appcues.wistia.com/medias/f7hwhvx8in).
 
-#### Send Custom Events to Appcues 
+#### Send Custom Events to Appcues
 
 The targeting of your flows can be strengthened by enabling tracking of your users's behaviors and actions. Call the `track(events:)` method whenever an event should be sent to Appcues. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
 
