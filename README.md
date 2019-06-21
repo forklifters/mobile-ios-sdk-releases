@@ -1,8 +1,6 @@
 <img width=443 src="https://uploads-ssl.webflow.com/5b227a6bd898e26d54ce18ac/5b76d242d0e5786ec310dd4d_Appcues-Logo-2018-Rebrand.svg" alt="Appcues Logo" />
 
-[![swift](https://img.shields.io/badge/Swift-5.0-orange.svg)](https://developer.apple.com/swift)
 [![ios 9+](https://img.shields.io/badge/iOS-9%2B-lightgrey.svg)](https://swift.org)
-[![xcode 10.1](https://img.shields.io/badge/Xcode-10.1%2B-blue.svg)](https://swift.org)
 ![cocoapods](https://img.shields.io/cocoapods/v/Appcues.svg)
 [![carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![license](https://img.shields.io/cocoapods/l/Appcues.svg)
@@ -16,7 +14,7 @@ If you have any questions, comments, or issues related to any products distribut
 
 ## Appcues iOS SDK
 
-The Appcues iOS SDK allows iOS app developers to build, publish, and test onboarding flows, without submitting to the app store. The SDK is a dynamic framework that is compatible with Objective-C and Swift projects that target **iOS 9** and higher, **Xcode 10.1** and higher.
+The Appcues iOS SDK allows iOS app developers to build, publish, and test onboarding flows, without submitting to the app store. The SDK is a framework that is compatible with Objective-C and Swift projects that target **iOS 9** and higher.
 
 In order to use Appcues you must register an account on https://beta.my.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
 
@@ -33,15 +31,18 @@ Fully integrating the SDK into your app involves these steps:
 3. [Identify Users in your App](#Identify-Users-in-your-App)
 4. [Identify Screens in your App](#Show-Flows-in-your-App)
 5. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
-6.  [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
+6. [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
 The following steps are optional:
-* [Enable Appcues Logs](#Enable-Appcues-Logs)
 * [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
 
 ### Installation
 
 Appcues can be installed into your application by importing a framework or via CocoaPods. Quick installation instructions are provided below for reference, but please refer to the [Appcues iOS Documentation](https://docs.appcues.com/collection/390-mobile-appl) for full details and troubleshooting.
+
+Special Note for Objective-C only projects: The framework uses Swift internally, so you should enable Swift to Objective-C interop by:
+1. Adding at least one Swift file to the project, which can be something like `Empty.swift`
+2. Adding an Objective-C bridging header when prompted if you project uses an App target. This isn't required if your project is using a framework target.
 
 #### CocoaPods Installation
 
@@ -60,8 +61,6 @@ $ pod init
 and add the following to your  `Podfile` :
 
 ```ruby
-use_frameworks!
-
 pod 'Appcues'
 ```
 
@@ -113,7 +112,7 @@ Once you have finished installing Appcues via CocoaPods or the Framework, you ca
 
 #### Setup Appcues
 
-In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
+In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared().setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
 
 You can also watch a video of how to setup Appcues [here](https://appcues.wistia.com/medias/2irgu29cpc).
 
@@ -123,7 +122,7 @@ import Appcues
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
-  Appcues.shared.setup()
+  Appcues.shared().setup()
 
   return true
 }
@@ -142,7 +141,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-In cases of non standard window usage, for instance if your application uses multiple windows or does not initialize the keyWindow when the app launches, a keyWindow can be provided to Appcues with `Appcues.shared.setup(keyWindow:)`
+In cases of non standard window usage, for instance if your application uses multiple windows or does not initialize the keyWindow when the app launches, a keyWindow can be provided to Appcues with `Appcues.shared().setup(keyWindow:)`
 
 <i>Swift</i>
 ```swift
@@ -150,7 +149,7 @@ import Appcues
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
-  Appcues.shared.setupWith(keyWindow: UIApplication.shared.keyWindow!)
+  Appcues.shared().setupWith(keyWindow: UIApplication.shared().keyWindow!)
 
   return true
 }
@@ -169,38 +168,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-#### Enable Appcues Logs
-
-The SDK can print console logs that can help troubleshoot issues with your installation. The framework currently supports two log levels: `none`, and `debug`, which shows all error logs. By default, the log level is `none`. *Important:* When deploying your app, ensure that logging is disabled by removing this code or setting the `none` log level.
-
-<i>Swift</i>
-```swift
-import Appcues
-
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  // Your own app's initialization code here
-
-  Appcues.shared.update(logLevel: .debug)
-  Appcues.shared.setup()
-
-  return true
-}
-```
-
-<i>Objective-C</i>
-```objective-c
-@import Appcues;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Your own app's initialization code here
-
-  [Appcues.shared updateWithLogLevel:AppcuesLogLevelDebug];
-  [Appcues.shared setup];
-
-  return YES;
-}
-```
-
 #### Identify Users in your App
 
 Users have to be identified to see flows. An `AppcuesUser` must have a unique id, and can have attached custom user attributes. You can find recommendations of additional user attributes to track [here](https://docs.appcues.com/article/410-mobile-user-properties-overview).
@@ -214,10 +181,10 @@ import Appcues
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
 
-  Appcues.shared.setup()
+  Appcues.shared().setup()
   let userAttributes = ["name": user.name, "email": user.email]
-  let user = AppcuesUser(id: user.id, attributes: userAttributes)
-  Appcues.shared.identify(user: user)
+  let user = AppcuesUser(userID: user.userID, attributes: userAttributes)
+  Appcues.shared().identify(user: user)
 
   return true
 }
@@ -232,8 +199,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   [Appcues.shared setup];
   NSDictionary *userAttributes = @{ @"name": user.id, @"email": user.email };
-  AppcuesUser *user = [[AppcuesUser alloc] initWithId:user.id attributes:userAttributes];
-  [Appcues.shared identifyWithUser:user];
+  AppcuesUser *user = [[AppcuesUser alloc] initWithUserID:user.id attributes:userAttributes];
+  [Appcues.shared identifyUser:user];
 
   return YES;
 }
@@ -251,7 +218,7 @@ Once a user is identified, the SDK automatically sends some user information to 
 
 ##### Using Appcues with Anonymous Users
 
-*Do not add this call if you already have `Appcues.shared.identify()` implemented.*
+*Do not add this call if you already have `Appcues.shared().identify()` implemented.*
 
 Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows are not targeted to specific users or for initial testing.
 
@@ -262,8 +229,8 @@ import Appcues
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
 
-  Appcues.shared.setup()
-  Appcues.shared.anonymous()
+  Appcues.shared().setup()
+  Appcues.shared().anonymous()
 
   return true
 }
@@ -296,7 +263,7 @@ import Appcues
 override func viewDidAppear(_ animated: Bool) {
   super.viewDidAppear(animated)
 
-  Appcues.shared.showEligibleFlowsOn(viewController: self, named: "HomeScreen")
+  Appcues.shared().showEligibleFlowsOn(viewController: self, named: "HomeScreen")
 }
 ```
 
@@ -311,21 +278,44 @@ override func viewDidAppear(_ animated: Bool) {
 }
 ```
 
-#### Launch Appcues Mobile SDK Editor
+#### Pair Appcues Mobile SDK to Appcues Web
 
-Before adding flows to your app, a screen needs to be sent from the device to the Mobile Web Editor. The Mobile SDK Editor can be launched from anywhere in your code, after the SDK is set up.
+Before adding flows to your app, a screen needs to be sent from the device to the Mobile Web Editor. Take the following steps to access the Mobile SDK Editor within your app:
+
+1. Set up an Appcues URL scheme:
+
+Add the following entry to your app's Info.plist:
+
+```
+  <key>CFBundleURLTypes</key>
+  <array>
+    <dict>
+      <key>CFBundleTypeRole</key>
+      <string>Editor</string>
+      <key>CFBundleURLName</key>
+      <string>com.appcues.scheme</string>
+      <key>CFBundleURLSchemes</key>
+      <array>
+        <string>$(PRODUCT_NAME)</string>
+      </array>
+    </dict>
+  </array>
+```
+
+This scheme is required to access the Appcues SDK Editor from within your app.
+
+2. Hook the Appcues SDK into your `UIApplicationDelegate`'s `application:open:options:` method.
 
 <i>Swift</i>
 ```swift
 import Appcues
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  // Your own app's initialization code here
-
-  Appcues.shared.setup()
-  Appcues.shared.launchEditor()
-
-  return true
+func application(_ app: UIApplication,
+                open url: URL,
+                options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+  let result = Appcues.shared().application(app, open: url, options: options)
+  // your application's code here
+  return result
 }
 ```
 
@@ -333,21 +323,22 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```objective-c
 @import Appcues;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Your own app's initialization code here
-
-  [Appcues.shared setup];
-  [Appcues.shared launchEditor];
-
-  return YES;
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+  BOOL result = [Appcues.shared application:app openURL:url options:options];
+  // your application's code here
+  return result
 }
 ```
 
-Once the Appcues Mobile SDK Editor is launched, it can be seen in the upper right corner of your app.
+2. Log into my.appcues.com and generate a one time password [code](https://appcues.wistia.com/medias/f7hwhvx8in).
+
+3. Launch Safari on a device or simulator that is running your app. Enter the following url, where PRODUCT_NAME is replaced with your app's product name which should match $(PRODUCT_NAME) from your project settings.
+PRODUCT_NAME://appcues
+
+4. You will be prompted to open your app. Accept and the Appcues Editor will be launched within your app. You can log into the Editor by entering the code which was generated from Appcues Web. If the code you entered is incorrect or expired, you will be prompted to generate another code. Otherwise the Appcues Editor button will show on top of your app on the top right corner of the screen.
+
 <img height=500
 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues Mobile SDK Editor" />
-
-If you launch the Mobile SDK Editor for the first time, you will be prompted to login. The code can be found in the Mobile Web, more detailed instructions [here](https://appcues.wistia.com/medias/f7hwhvx8in).
 
 #### Send Custom Events to Appcues
 
@@ -362,7 +353,7 @@ import Appcues
 func createAuction() {
   let createdAuctionEvent = AppcuesEvent(name: "Created auction")
   let events = [createdAuctionEvent]
-  Appcues.shared.track(events: events)
+  Appcues.shared().track(events: events)
 }
 ```
 
@@ -372,7 +363,7 @@ func createAuction() {
 
 - (void)createAuction {
   AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
-  [Appcues.shared trackWithEvents:@[createdAuctionEvent]];
+  [Appcues.shared trackEvents:@[createdAuctionEvent]];
 }
 ```
 
