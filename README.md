@@ -19,14 +19,16 @@ The Appcues iOS SDK allows iOS app developers to build, publish, and test onboar
 In order to use Appcues you must register an account on https://beta.my.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
 
 Before installing Appcues, make sure that you
+
 1. [Create and join an Appcues Account](https://appcues.wistia.com/medias/i2ss29oa71)
 2. [Navigate to the Mobile Web Editor](https://appcues.wistia.com/medias/efeq7u4yt7)
 
 Fully integrating the SDK into your app involves these steps:
+
 1. [Installation](#Installation)
-    -  [CocoaPods](#CocoaPods-Installation)
-    -  [Carthage](#Carthage-Installation)
-    -  [Manual Installation](#Direct-Framework-Installation)
+   - [CocoaPods](#CocoaPods-Installation)
+   - [Carthage](#Carthage-Installation)
+   - [Manual Installation](#Direct-Framework-Installation)
 2. [Setup Appcues](#Setup-Appcues)
 3. [Identify Users in your App](#Identify-Users-in-your-App)
 4. [Identify Screens in your App](#Show-Flows-in-your-App)
@@ -34,7 +36,8 @@ Fully integrating the SDK into your app involves these steps:
 6. [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
 The following steps are optional:
-* [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
+
+- [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
 
 ### Installation
 
@@ -54,7 +57,8 @@ Now create a `Podfile` in the root of your project directory
 ```sh
 $ pod init
 ```
-and add the following to your  `Podfile` :
+
+and add the following to your `Podfile` :
 
 ```ruby
 pod 'Appcues'
@@ -90,7 +94,7 @@ If you wish to install Appcues directly into your application via the binary fra
 
 1. Add the framework to the `Embedded Binaries` section of your app `target` in `Xcode`, instructing Xcode to copy items into your destination group's folder.
 
-...<img width=600 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ManualFrameworkInstall.png" alt="Install Framework" />
+<img src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ManualFrameworkInstall.png" alt="Install Framework" />
 
 2. The framework distribution includes simulator architectures so that you can build and run it in an `iOS Simulator`, but these need to be removed when archiving for submission to iTunesConnect. To do this, a script is included in the framework to strip these architectures, but must be configured on your project so that it runs whenever you build the app for archive.
 
@@ -108,23 +112,25 @@ Once you have finished installing Appcues via CocoaPods or the Framework, you ca
 
 #### Setup Appcues
 
-In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared().setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
+In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
 
 You can also watch a video of how to setup Appcues [here](https://appcues.wistia.com/medias/2irgu29cpc).
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
-  Appcues.shared().setup()
+  Appcues.shared.setup()
 
   return true
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
@@ -137,21 +143,23 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-In cases of non standard window usage, for instance if your application uses multiple windows or does not initialize the keyWindow when the app launches, a keyWindow can be provided to Appcues with `Appcues.shared().setup(keyWindow:)`
+In cases of non standard window usage, for instance if your application uses multiple windows or does not initialize the keyWindow when the app launches, a keyWindow can be provided to Appcues with `Appcues.shared.setup(keyWindow:)`
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
-  Appcues.shared().setupWith(keyWindow: UIApplication.shared().keyWindow!)
+  Appcues.shared.setupWithKeyWindow(UIApplication.shared.keyWindow!)
 
   return true
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
@@ -171,22 +179,24 @@ Users have to be identified to see flows. An `AppcuesUser` must have a unique id
 You can also watch a video of how to do identify users [here](https://appcues.wistia.com/medias/bdooulc8r1).
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
 
-  Appcues.shared().setup()
+  Appcues.shared.setup()
   let userAttributes = ["name": user.name, "email": user.email]
   let user = AppcuesUser(userID: user.userID, attributes: userAttributes)
-  Appcues.shared().identify(user: user)
+  Appcues.shared.identifyUser(user)
 
   return true
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
@@ -203,36 +213,39 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 ```
 
 Once a user is identified, the SDK automatically sends some user information to Appcues. This information is:
-* `OS version` the iOS version that the device or simulator is running on. For instance, "12.1".
-* `App version` the version of your app. For instance, "2.1.0".
-* `Build version` the build version of your app. For instance, "1".
-* `Device type` "iPhone", "iPad" or "Pod touch"
-* `Day of week` the day of where the device or simulator is. For instance, "Monday", "Tuesday", "Wednesday" etc.
-* `Device language` the local device or simulator language. For instance, "en" for English .
-* `Simulator` true if your app is running on a simulator, otherwise false.
-* `Appcues version` the Appcues Mobile sdk version your app is running. For instance, "0.3.0".
+
+- `OS version` the iOS version that the device or simulator is running on. For instance, "12.1".
+- `App version` the version of your app. For instance, "2.1.0".
+- `Build version` the build version of your app. For instance, "1".
+- `Device type` "iPhone", "iPad" or "Pod touch"
+- `Day of week` the day of where the device or simulator is. For instance, "Monday", "Tuesday", "Wednesday" etc.
+- `Device language` the local device or simulator language. For instance, "en" for English .
+- `Simulator` true if your app is running on a simulator, otherwise false.
+- `Appcues version` the Appcues Mobile sdk version your app is running. For instance, "0.3.0".
 
 ##### Using Appcues with Anonymous Users
 
-*Do not add this call if you already have `Appcues.shared().identify()` implemented.*
+_Do not add this call if you already have `Appcues.shared.identify()` implemented._
 
 Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows are not targeted to specific users or for initial testing.
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
   // Your own app's initialization code here
 
-  Appcues.shared().setup()
-  Appcues.shared().anonymous()
+  Appcues.shared.setup()
+  Appcues.shared.anonymous()
 
   return true
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
@@ -253,24 +266,26 @@ In order for the Appcues SDK to know what screen a user is on and to find all th
 You can also watch a video of how to do enable flows [here](https://appcues.wistia.com/medias/3hdrm9xfre).
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 override func viewDidAppear(_ animated: Bool) {
   super.viewDidAppear(animated)
 
-  Appcues.shared().showEligibleFlowsOn(viewController: self, named: "HomeScreen")
+  Appcues.shared.showEligibleFlowsForScreenName("HomeScreen")
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
-  [Appcues.shared showEligibleFlowsOnViewController:self named:@"HomeScreen"];
+  [Appcues.shared showEligibleFlowsForScreenName:@"HomeScreen"];
 }
 ```
 
@@ -282,56 +297,67 @@ Before adding flows to your app, a screen needs to be sent from the device to th
 
 Add the following entry to your app's Info.plist:
 
-```
-  <key>CFBundleURLTypes</key>
-  <array>
-    <dict>
-      <key>CFBundleTypeRole</key>
-      <string>Editor</string>
-      <key>CFBundleURLName</key>
-      <string>com.appcues.scheme</string>
-      <key>CFBundleURLSchemes</key>
-      <array>
-        <string>$(PRODUCT_NAME)</string>
-      </array>
-    </dict>
-  </array>
-```
+Your app's `Info.plist` will have a format similar to this:
 
-This scheme is required to access the Appcues SDK Editor from within your app.
+<img
+src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/InfoPListDefault.png" alt="Example Default App Info.plist" />
+
+Add an entry by pressing the (+) button in Xcode's UI:
+
+<img
+src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/InfoPListWithURLSchemes.png"
+alt="Example App Info.plist with updated URL Schemes" />
+
+By default we recommend you use your app's `$(PRODUCT_NAME)` for the scheme name. You can view your app's `$(PRODUCT_NAME)` in your project's build settings:
+
+<img
+src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ProductNameBuildSetting.png"
+alt="Example App PRODUCT_NAME Build Setting" />
 
 2. Hook the Appcues SDK into your `UIApplicationDelegate`'s `application:open:options:` method.
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 func application(_ app: UIApplication,
                 open url: URL,
                 options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-  let result = Appcues.shared().application(app, open: url, options: options)
+  let appcuesHandlesOpenURL = Appcues.shared.application(app, openURL: url, options: options)
   // your application's code here
-  return result
+  let yourAppHandlesOpenURL = ...
+  return yourAppHandlesOpenURL || appcuesHandlesOpenURL
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
 - (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
-  BOOL result = [Appcues.shared application:app openURL:url options:options];
+  BOOL appcuesHandlesOpenURL = [Appcues.shared application:app openURL:url options:options];
   // your application's code here
-  return result
+  BOOL yourAppHandlesOpenURL = ...
+
+  return yourAppHandlesOpenURL || appcuesHandlesOpenURL
 }
 ```
 
 2. Log into my.appcues.com and generate a one time password [code](https://appcues.wistia.com/medias/f7hwhvx8in).
 
-3. Launch Safari on a device or simulator that is running your app. Enter the following url, where PRODUCT_NAME is replaced with your app's product name which should match $(PRODUCT_NAME) from your project settings.
-PRODUCT_NAME://appcues
+3. With the scheme example above, you will be able to launch the Appcues SDK Editor within your app by entering the following URL in Safari:
 
-4. You will be prompted to open your app. Accept and the Appcues Editor will be launched within your app. You can log into the Editor by entering the code which was generated from Appcues Web. If the code you entered is incorrect or expired, you will be prompted to generate another code. Otherwise the Appcues Editor button will show on top of your app on the top right corner of the screen.
+<img
+src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/SafariURLEntry.png"
+alt="Safari URL Entry" />
+
+<img
+src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/SafariAppLaunchPrompt.png"
+alt="Safari App Launch Prompt" />
+
+4. Accept the launch prompt and the Appcues Editor will be launched within your app. You can log into the Editor by entering the code which was generated from Appcues Web. If the code you entered is incorrect or expired, you will be prompted to generate another code. Otherwise the Appcues Editor button will show on top of your app on the top right corner of the screen.
 
 <img height=500
 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues Mobile SDK Editor" />
@@ -343,17 +369,19 @@ The targeting of your flows can be strengthened by enabling tracking of your use
 One example would be an auction app that wishes to show a message of congratulations after a user creates their first auction:
 
 <i>Swift</i>
+
 ```swift
 import Appcues
 
 func createAuction() {
   let createdAuctionEvent = AppcuesEvent(name: "Created auction")
   let events = [createdAuctionEvent]
-  Appcues.shared().track(events: events)
+  Appcues.shared.trackEvents(events)
 }
 ```
 
 <i>Objective-C</i>
+
 ```objective-c
 @import Appcues;
 
