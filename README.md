@@ -30,10 +30,11 @@ Fully integrating the SDK into your app involves these steps:
    - [Carthage](#Carthage-Installation)
    - [Manual Installation](#Direct-Framework-Installation)
 2. [Setup Appcues](#Setup-Appcues)
-3. [Identify Users in your App](#Identify-Users-in-your-App)
-4. [Identify Screens in your App](#Show-Flows-in-your-App)
-5. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
-6. [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
+3. [Pair Appcues Mobile SDK to Appcues Web](#Pair-Appcues-Mobile-SDK-to-Appcues-Web)
+4. [Identify Users in your App](#Identify-Users-in-your-App)
+5. [Identify Screens in your App](#Show-Flows-in-your-App)
+6. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
+7. [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
 The following steps are optional:
 
@@ -172,126 +173,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 }
 ```
 
-#### Identify Users in your App
-
-Users have to be identified to see flows. An `AppcuesUser` must have a unique id, and can have attached custom user attributes. You can find recommendations of additional user attributes to track [here](https://docs.appcues.com/article/410-mobile-user-properties-overview).
-
-You can also watch a video of how to do identify users [here](https://appcues.wistia.com/medias/bdooulc8r1).
-
-<i>Swift</i>
-
-```swift
-import Appcues
-
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  // Your own app's initialization code here
-
-  Appcues.shared.setup()
-  let userAttributes = ["name": user.name, "email": user.email]
-  let user = AppcuesUser(userID: user.userID, attributes: userAttributes)
-  Appcues.shared.identifyUser(user)
-
-  return true
-}
-```
-
-<i>Objective-C</i>
-
-```objective-c
-@import Appcues;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Your own app's initialization code here
-
-  [Appcues.shared setup];
-  NSDictionary *userAttributes = @{ @"name": user.id, @"email": user.email };
-  AppcuesUser *user = [[AppcuesUser alloc] initWithUserID:user.id attributes:userAttributes];
-  [Appcues.shared identifyUser:user];
-
-  return YES;
-}
-```
-
-Once a user is identified, the SDK automatically sends some user information to Appcues. This information is:
-
-- `OS version` the iOS version that the device or simulator is running on. For instance, "12.1".
-- `App version` the version of your app. For instance, "2.1.0".
-- `Build version` the build version of your app. For instance, "1".
-- `Device type` "iPhone", "iPad" or "Pod touch"
-- `Day of week` the day of where the device or simulator is. For instance, "Monday", "Tuesday", "Wednesday" etc.
-- `Device language` the local device or simulator language. For instance, "en" for English .
-- `Simulator` true if your app is running on a simulator, otherwise false.
-- `Appcues version` the Appcues Mobile sdk version your app is running. For instance, "0.3.0".
-
-##### Using Appcues with Anonymous Users
-
-_Do not add this call if you already have `Appcues.shared.identify()` implemented._
-
-Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows are not targeted to specific users or for initial testing.
-
-<i>Swift</i>
-
-```swift
-import Appcues
-
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  // Your own app's initialization code here
-
-  Appcues.shared.setup()
-  Appcues.shared.anonymous()
-
-  return true
-}
-```
-
-<i>Objective-C</i>
-
-```objective-c
-@import Appcues;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Your own app's initialization code here
-
-  [Appcues.shared setup];
-  [Appcues.shared anonymous];
-
-  return YES;
-}
-```
-
-#### Show Flows in your App
-
-In order for the Appcues SDK to know what screen a user is on and to find all the flows that qualify for that screen, a screen needs to be identified. Add the following code to the screen where you want to check for flows. We recommended adding this code after the view finishes appearing - i.e. the corresponding `UIViewController`'s `viewDidAppear` method.
-
-You can also watch a video of how to do enable flows [here](https://appcues.wistia.com/medias/3hdrm9xfre).
-
-<i>Swift</i>
-
-```swift
-import Appcues
-
-override func viewDidAppear(_ animated: Bool) {
-  super.viewDidAppear(animated)
-
-  Appcues.shared.showEligibleFlowsForScreenName("HomeScreen")
-}
-```
-
-<i>Objective-C</i>
-
-```objective-c
-@import Appcues;
-
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
-
-  [Appcues.shared showEligibleFlowsForScreenName:@"HomeScreen"];
-}
-```
-
 #### Pair Appcues Mobile SDK to Appcues Web
 
-Before adding flows to your app, a screen needs to be sent from the device to the Mobile Web Editor. Take the following steps to access the Mobile SDK Editor within your app:
+Before adding flows to your app, a snapshot of your app needs to be sent from the device to the Mobile Web Editor. We recommend you use a real iOS device that is supported by your app to do this. You can use a Simulator device as well, but if you do, you should active the Accessibility Inspector (Xcode -> Open Developer Tool -> Accessibility Inspector) before you start sending snapshots of your app to the editor and build flows.
+
+Take the following steps to access the Mobile SDK Editor within your app:
 
 1. Set up an Appcues URL scheme:
 
@@ -388,6 +274,123 @@ func createAuction() {
 - (void)createAuction {
   AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
   [Appcues.shared trackEvents:@[createdAuctionEvent]];
+}
+```
+
+#### Identify Users in your App
+
+Users have to be identified to see flows. An `AppcuesUser` must have a unique id, and can have attached custom user attributes. You can find recommendations of additional user attributes to track [here](https://docs.appcues.com/article/410-mobile-user-properties-overview).
+
+You can also watch a video of how to do identify users [here](https://appcues.wistia.com/medias/bdooulc8r1).
+
+<i>Swift</i>
+
+```swift
+import Appcues
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  // Your own app's initialization code here
+
+  Appcues.shared.setup()
+  let userAttributes = ["name": user.name, "email": user.email]
+  let user = AppcuesUser(userId: user.userId, attributes: userAttributes)
+  Appcues.shared.identifyUser(user)
+
+  return true
+}
+```
+
+<i>Objective-C</i>
+
+```objective-c
+@import Appcues;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Your own app's initialization code here
+
+  [Appcues.shared setup];
+  NSDictionary *userAttributes = @{ @"name": user.id, @"email": user.email };
+  AppcuesUser *user = [[AppcuesUser alloc] initWithUserId:user.id attributes:userAttributes];
+  [Appcues.shared identifyUser:user];
+
+  return YES;
+}
+```
+
+Once a user is identified, the SDK automatically sends some user information to Appcues. This information is:
+
+- `OS version` the iOS version that the device or simulator is running on. For instance, "12.1".
+- `App version` the version of your app. For instance, "2.1.0".
+- `Build version` the build version of your app. For instance, "1".
+- `Device type` "iPhone", "iPad" or "Pod touch"
+- `Day of week` the day of where the device or simulator is. For instance, "Monday", "Tuesday", "Wednesday" etc.
+- `Device language` the local device or simulator language. For instance, "en" for English .
+- `Simulator` true if your app is running on a simulator, otherwise false.
+- `Appcues version` the Appcues Mobile sdk version your app is running. For instance, "0.3.0".
+
+##### Using Appcues with Anonymous Users
+
+_Do not add this call if you already have `Appcues.shared.identify()` implemented._
+
+Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows are not targeted to specific users or for initial testing.
+
+<i>Swift</i>
+
+```swift
+import Appcues
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  // Your own app's initialization code here
+
+  Appcues.shared.setup()
+  Appcues.shared.anonymous()
+
+  return true
+}
+```
+
+<i>Objective-C</i>
+
+```objective-c
+@import Appcues;
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  // Your own app's initialization code here
+
+  [Appcues.shared setup];
+  [Appcues.shared anonymous];
+
+  return YES;
+}
+```
+
+#### Show Flows in your App
+
+In order for the Appcues SDK to know what screen a user is on and to find all the flows that qualify for that screen, a screen needs to be identified. Add the following code to the screen where you want to check for flows. We recommended adding this code after the view finishes appearing - i.e. the corresponding `UIViewController`'s `viewDidAppear` method.
+
+You can also watch a video of how to do enable flows [here](https://appcues.wistia.com/medias/3hdrm9xfre).
+
+<i>Swift</i>
+
+```swift
+import Appcues
+
+override func viewDidAppear(_ animated: Bool) {
+  super.viewDidAppear(animated)
+
+  Appcues.shared.showEligibleFlowsForScreenName("HomeScreen")
+}
+```
+
+<i>Objective-C</i>
+
+```objective-c
+@import Appcues;
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+
+  [Appcues.shared showEligibleFlowsForScreenName:@"HomeScreen"];
 }
 ```
 

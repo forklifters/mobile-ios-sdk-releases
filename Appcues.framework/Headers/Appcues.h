@@ -18,10 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AppcuesUser : NSObject
 
-@property (nonatomic, copy, readonly) NSString *userID;
+@property (nonatomic, copy, readonly) NSString *userId;
 @property (nonatomic, strong, readonly) NSDictionary<NSString *, id> *attributes;
 
-- (AppcuesUser *)initWithUserID:(NSString *)userID attributes:(NSDictionary<NSString *, id> *)attributes;
+- (AppcuesUser *)initWithUserId:(NSString *)userId attributes:(NSDictionary<NSString *, id> *)attributes;
 
 @end
 
