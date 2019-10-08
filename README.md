@@ -4,6 +4,7 @@
 ![cocoapods](https://img.shields.io/cocoapods/v/Appcues.svg)
 [![carthage](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![license](https://img.shields.io/cocoapods/l/Appcues.svg)
+[![tests](https://app.bitrise.io/app/156d3d483952dfb9/status.svg?token=fqKNRwYACUlwJGHPMNe3Dg&branch=master)](https://app.bitrise.io/app/156d3d483952dfb9)
 
 # Appcues iOS SDK Releases
 
