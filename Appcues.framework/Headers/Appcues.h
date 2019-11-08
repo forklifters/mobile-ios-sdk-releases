@@ -120,10 +120,9 @@ NS_SWIFT_NAME(trackEvents(_:));
 /*!
  Attempts to show eligible flows for the screen.
 
- @param  name  A unique name that identifies the screen.
  */
-- (void)showEligibleFlowsForScreenName:(NSString *)name
-NS_SWIFT_NAME(showEligibleFlowsForScreenName(_:));
+- (void)showEligibleFlows
+NS_SWIFT_NAME(showEligibleFlows());
 
 @end
 

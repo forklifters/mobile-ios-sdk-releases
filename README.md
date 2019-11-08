@@ -16,7 +16,7 @@ If you have any questions, comments, or issues related to any products distribut
 
 The Appcues iOS SDK allows iOS app developers to build, publish, and test onboarding flows, without submitting to the app store. The SDK is a framework that is compatible with Objective-C and Swift projects that target **iOS 10** and higher.
 
-In order to use Appcues you must register an account on https://beta.my.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
+In order to use Appcues you must register an account on https://studio.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
 
 Before installing Appcues, make sure that you
 
@@ -33,12 +33,11 @@ Fully integrating the SDK into your app involves these steps:
 3. [Pair Appcues Mobile SDK to Appcues Web](#Pair-Appcues-Mobile-SDK-to-Appcues-Web)
 4. [Identify Users in your App](#Identify-Users-in-your-App)
 5. [Identify Screens in your App](#Show-Flows-in-your-App)
-6. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
-7. [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
+6. [Launch the Appcues Mobile SDK Editor](#Pair-Appcues-Mobile-SDK-to-Appcues-Web)
 
 The following steps are optional:
 
-- [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
+- [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues-optional)
 
 ### Installation
 
@@ -231,7 +230,7 @@ func application(_ app: UIApplication,
 }
 ```
 
-2. Log into my.appcues.com and generate a one time password [code](https://appcues.wistia.com/medias/f7hwhvx8in).
+2. Log into https://studio.appcues.com/mobile and generate a one time password [code](https://appcues.wistia.com/medias/f7hwhvx8in).
 
 3. With the scheme example above, you will be able to launch the Appcues SDK Editor within your app by entering the following URL in Safari:
 
@@ -247,35 +246,6 @@ alt="Safari App Launch Prompt" />
 
 <img height=500
 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues Mobile SDK Editor" />
-
-#### Send Custom Events to Appcues
-
-The targeting of your flows can be strengthened by enabling tracking of your users's behaviors and actions. Call the `track(events:)` method whenever an event should be sent to Appcues. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
-
-One example would be an auction app that wishes to show a message of congratulations after a user creates their first auction:
-
-<i>Swift</i>
-
-```swift
-import Appcues
-
-func createAuction() {
-  let createdAuctionEvent = AppcuesEvent(name: "Created auction")
-  let events = [createdAuctionEvent]
-  Appcues.shared.trackEvents(events)
-}
-```
-
-<i>Objective-C</i>
-
-```objective-c
-@import Appcues;
-
-- (void)createAuction {
-  AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
-  [Appcues.shared trackEvents:@[createdAuctionEvent]];
-}
-```
 
 #### Identify Users in your App
 
@@ -378,7 +348,7 @@ import Appcues
 override func viewDidAppear(_ animated: Bool) {
   super.viewDidAppear(animated)
 
-  Appcues.shared.showEligibleFlowsForScreenName("HomeScreen")
+  Appcues.shared.showEligibleFlows()
 }
 ```
 
@@ -390,15 +360,38 @@ override func viewDidAppear(_ animated: Bool) {
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
-  [Appcues.shared showEligibleFlowsForScreenName:@"HomeScreen"];
+  [Appcues.shared showEligibleFlows];
 }
 ```
 
-#### Add AccessibilityIdentifiers to your App
+#### Send Custom Events to Appcues (optional)
 
-In order to ensure tooltip placement accuracy, it is highly recommended to add [accessibilityIdentifiers](https://developer.apple.com/documentation/uikit/uiaccessibilityidentification/1623132-accessibilityidentifier) to your views.
+The targeting of your flows can be strengthened by enabling tracking of your users's behaviors and actions. Call the `track(events:)` method whenever an event should be sent to Appcues. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
 
-You can see a detailed walkthrough of how to add accessibilityIdentifiers to your app [here](https://appcues.wistia.com/medias/kdyikd64q7).
+One example would be an auction app that wishes to show a message of congratulations after a user creates their first auction:
+
+<i>Swift</i>
+
+```swift
+import Appcues
+
+func createAuction() {
+  let createdAuctionEvent = AppcuesEvent(name: "Created auction")
+  let events = [createdAuctionEvent]
+  Appcues.shared.trackEvents(events)
+}
+```
+
+<i>Objective-C</i>
+
+```objective-c
+@import Appcues;
+
+- (void)createAuction {
+  AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
+  [Appcues.shared trackEvents:@[createdAuctionEvent]];
+}
+```
 
 ## Contact
 
