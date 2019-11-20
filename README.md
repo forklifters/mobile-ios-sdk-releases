@@ -16,12 +16,12 @@ If you have any questions, comments, or issues related to any products distribut
 
 The Appcues iOS SDK allows iOS app developers to build, publish, and test onboarding flows, without submitting to the app store. The SDK is a framework that is compatible with Objective-C and Swift projects that target **iOS 10** and higher.
 
-In order to use Appcues you must register an account on https://studio.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
+In order to use Appcues you must register an account on https://beta.my.appcues.com/mobile, and install the SDK into your iOS app. You can then use the SDK in conjunction with the mobile web editor to set up flows that will be targeted to live users of your app.
 
 Before installing Appcues, make sure that you
 
-1. [Create and join an Appcues Account](https://appcues.wistia.com/medias/i2ss29oa71)
-2. [Navigate to the Mobile Web Editor](https://appcues.wistia.com/medias/efeq7u4yt7)
+1. Create and join an Appcues Account
+2. Navigate to the Mobile Web Editor
 
 Fully integrating the SDK into your app involves these steps:
 
@@ -32,12 +32,13 @@ Fully integrating the SDK into your app involves these steps:
 2. [Setup Appcues](#Setup-Appcues)
 3. [Pair Appcues Mobile SDK to Appcues Web](#Pair-Appcues-Mobile-SDK-to-Appcues-Web)
 4. [Identify Users in your App](#Identify-Users-in-your-App)
-5. [Identify Screens in your App](#Show-Flows-in-your-App)
-6. [Launch the Appcues Mobile SDK Editor](#Pair-Appcues-Mobile-SDK-to-Appcues-Web)
+5. [Show Flows in your App](#Show-Flows-in-your-App)
+6. [Launch the Appcues Mobile SDK Editor](#Launch-Appcues-Mobile-SDK-Editor)
+7. [Add AccessibilityIdentifiers to your App](#Add-AccessibilityIdentifiers-to-your-App)
 
 The following steps are optional:
 
-- [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues-optional)
+- [Send Custom Events to Appcues](#Send-Custom-Events-to-Appcues)
 
 ### Installation
 
@@ -114,8 +115,6 @@ Once you have finished installing Appcues via CocoaPods or the Framework, you ca
 
 In your `UIApplicationDelegate`, setup Appcues by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` method.
 
-You can also watch a video of how to setup Appcues [here](https://appcues.wistia.com/medias/2irgu29cpc).
-
 <i>Swift</i>
 
 ```swift
@@ -138,35 +137,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
   // Your own app's initialization code here
 
   [Appcues.shared setup];
-
-  return YES;
-}
-```
-
-In cases of non standard window usage, for instance if your application uses multiple windows or does not initialize the keyWindow when the app launches, a keyWindow can be provided to Appcues with `Appcues.shared.setup(keyWindow:)`
-
-<i>Swift</i>
-
-```swift
-import Appcues
-
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-  // Your own app's initialization code here
-  Appcues.shared.setupWithKeyWindow(UIApplication.shared.keyWindow!)
-
-  return true
-}
-```
-
-<i>Objective-C</i>
-
-```objective-c
-@import Appcues;
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Your own app's initialization code here
-
-  [Appcues.shared setupWithKeyWindow:UIApplication.sharedApplication.keyWindow];
 
   return YES;
 }
@@ -230,7 +200,7 @@ func application(_ app: UIApplication,
 }
 ```
 
-2. Log into https://studio.appcues.com/mobile and generate a one time password [code](https://appcues.wistia.com/medias/f7hwhvx8in).
+2. Log into https://studio.appcues.com/mobile and generate a one time password code.
 
 3. With the scheme example above, you will be able to launch the Appcues SDK Editor within your app by entering the following URL in Safari:
 
@@ -247,24 +217,58 @@ alt="Safari App Launch Prompt" />
 <img height=500
 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues Mobile SDK Editor" />
 
-#### Identify Users in your App
+#### Record Custom Events
 
-Users have to be identified to see flows. An `AppcuesUser` must have a unique id, and can have attached custom user attributes. You can find recommendations of additional user attributes to track [here](https://docs.appcues.com/article/410-mobile-user-properties-overview).
+The targeting of your flows can be strengthened by enabling tracking of your users' behaviors and actions. Call the `record(userEvents:)` method whenever an event should be sent to Appcues. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
 
-You can also watch a video of how to do identify users [here](https://appcues.wistia.com/medias/bdooulc8r1).
+One example would be an auction app that wishes to show a message of congratulations after a user creates their first auction:
 
 <i>Swift</i>
 
 ```swift
 import Appcues
 
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+func createAuction() {
+  let createdAuctionEvent = AppcuesEvent(name: "Created auction")
+  Appcues.shared.record(userEvents: [createdAuctionEvent])
+}
+```
+
+<i>Objective-C</i>
+
+```objective-c
+@import Appcues;
+
+- (void)createAuction {
+  AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
+  [Appcues.shared recordUserEvents:@[createdAuctionEvent]];
+}
+```
+
+#### Identify Users & Record Profile Updates in your App
+
+Users have to be identified to see flows. At any point, you can also record `AppcuesUserProfileUpdate`s to save
+information about the user that can be used for flow targeting. This information is uploaded when the `sendActivities()`
+method is called.
+
+<i>Swift</i>
+
+```swift
+import Appcues
+
+func application(
+  _ application: UIApplication,
+  didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?
+  ) -> Bool {
   // Your own app's initialization code here
 
   Appcues.shared.setup()
-  let userAttributes = ["name": user.name, "email": user.email]
-  let user = AppcuesUser(userId: user.userId, attributes: userAttributes)
-  Appcues.shared.identifyUser(user)
+
+  let userId = "TestUser1"
+  let customProperties = ["name": user.name, "email": user.email]
+  let userProfileUpdate = AppcuesUserProfileUpdate(customProperties: customProperties)
+  Appcues.shared.identifyUserWithId(userId: userId)
+  Appcues.shared.record(userProfileUpdate: userProfileUpdate)
 
   return true
 }
@@ -279,28 +283,32 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
   // Your own app's initialization code here
 
   [Appcues.shared setup];
-  NSDictionary *userAttributes = @{ @"name": user.id, @"email": user.email };
-  AppcuesUser *user = [[AppcuesUser alloc] initWithUserId:user.id attributes:userAttributes];
-  [Appcues.shared identifyUser:user];
+
+  NSString *userId = "TestUser1"
+  NSDictionary *customProperties = @{ @"name": user.id, @"email": user.email };
+  AppcuesUserProfileUpdate *userProfileUpdate =
+    [[AppcuesUserProfileUpdate alloc] initWithCustomProperties: customProperties];
+
+  [Appcues.shared identifyUserWithId: userId];
+  [Appcues.shared recordUserProfileUpdate: userProfileUpdate];
 
   return YES;
 }
 ```
 
-Once a user is identified, the SDK automatically sends some user information to Appcues. This information is:
+Once a user is identified, the SDK automatically sends some user properties to Appcues. This information is:
 
-- `OS version` the iOS version that the device or simulator is running on. For instance, "12.1".
-- `App version` the version of your app. For instance, "2.1.0".
-- `Build version` the build version of your app. For instance, "1".
-- `Device type` "iPhone", "iPad" or "Pod touch"
-- `Day of week` the day of where the device or simulator is. For instance, "Monday", "Tuesday", "Wednesday" etc.
-- `Device language` the local device or simulator language. For instance, "en" for English .
-- `Simulator` true if your app is running on a simulator, otherwise false.
-- `Appcues version` the Appcues Mobile sdk version your app is running. For instance, "0.3.0".
+- `appcues_app_domain_version` the version of your app. For instance, "2.1.0".
+- `appcues_app_domain_build_version` the build version of your app. For instance, "1".
+- `appcues_device_type` "iPhone", "iPad" or "Pod touch"
+- `appcues_device_os_version` the iOS version that the device or simulator is running on. For instance, "12.1".
+- `appcues_device_language` the local device or simulator language. For instance, "en" for English .
+- `appcues_device_is_simulator` true if your app is running on a simulator, otherwise false.
+- `appcues_sdk_version` the Appcues Mobile sdk version your app is running. For instance, "0.3.0".
 
 ##### Using Appcues with Anonymous Users
 
-_Do not add this call if you already have `Appcues.shared.identify()` implemented._
+_Do not add this call if you already have `Appcues.shared.identifyUserWithId(userId:)` implemented._
 
 Uniquely identifying users will give you the most control over flow targeting, but the `anonymous` method can be used when flows are not targeted to specific users or for initial testing.
 
@@ -313,7 +321,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
   // Your own app's initialization code here
 
   Appcues.shared.setup()
-  Appcues.shared.anonymous()
+
+  let customProperties = ["name": "TestName", "email": "testemail@email.com"]
+  let userProfileUpdate = AppcuesUserProfileUpdate(customProperties: customProperties)
+  Appcues.shared.identifyAnonymousUser()
+  Appcues.shared.record(userProfileUpdate: userProfileUpdate)
 
   return true
 }
@@ -328,7 +340,13 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
   // Your own app's initialization code here
 
   [Appcues.shared setup];
-  [Appcues.shared anonymous];
+
+  NSDictionary *customProperties = @{ @"name": "TestName", @"email": @"testemail@email.com" };
+  AppcuesUserProfileUpdate *userProfileUpdate =
+    [[AppcuesUserProfileUpdate alloc] initWithCustomProperties: customProperties];
+
+  [Appcues.shared identifyAnonymousUser];
+  [Appcues.shared recordUserProfileUpdate: userProfileUpdate];
 
   return YES;
 }
@@ -338,8 +356,6 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 In order for the Appcues SDK to know what screen a user is on and to find all the flows that qualify for that screen, a screen needs to be identified. Add the following code to the screen where you want to check for flows. We recommended adding this code after the view finishes appearing - i.e. the corresponding `UIViewController`'s `viewDidAppear` method.
 
-You can also watch a video of how to do enable flows [here](https://appcues.wistia.com/medias/3hdrm9xfre).
-
 <i>Swift</i>
 
 ```swift
@@ -348,7 +364,7 @@ import Appcues
 override func viewDidAppear(_ animated: Bool) {
   super.viewDidAppear(animated)
 
-  Appcues.shared.showEligibleFlows()
+  Appcues.shared.sendActivities()
 }
 ```
 
@@ -360,36 +376,7 @@ override func viewDidAppear(_ animated: Bool) {
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
 
-  [Appcues.shared showEligibleFlows];
-}
-```
-
-#### Send Custom Events to Appcues (optional)
-
-The targeting of your flows can be strengthened by enabling tracking of your users's behaviors and actions. Call the `track(events:)` method whenever an event should be sent to Appcues. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
-
-One example would be an auction app that wishes to show a message of congratulations after a user creates their first auction:
-
-<i>Swift</i>
-
-```swift
-import Appcues
-
-func createAuction() {
-  let createdAuctionEvent = AppcuesEvent(name: "Created auction")
-  let events = [createdAuctionEvent]
-  Appcues.shared.trackEvents(events)
-}
-```
-
-<i>Objective-C</i>
-
-```objective-c
-@import Appcues;
-
-- (void)createAuction {
-  AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
-  [Appcues.shared trackEvents:@[createdAuctionEvent]];
+  [Appcues.shared sendActivities];
 }
 ```
 
