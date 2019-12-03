@@ -155,8 +155,11 @@ NS_SWIFT_NAME(sendActivities(completion:));
 - (void)sendActivitiesIgnoringFlowsWithCompletion:(void (^)(void))completion
 NS_SWIFT_NAME(sendActivitiesIgnoringFlows(completion:));
 
-+ (Appcues *)_internalSharedSetupWithConfig:(NSDictionary *)config
-NS_SWIFT_NAME(_internalSharedSetupWith(config:));
+- (NSString *)_internalValueOfKey:(NSString *)propertyKey
+NS_SWIFT_NAME(_internalValueOf(key:));
+
+- (void)_resetWithConfig:(NSDictionary *)config
+NS_SWIFT_NAME(_resetWithConfig(config:));
 
 @end
 
