@@ -105,7 +105,7 @@ $ pod install
 
 #### Add the SDK using Carthage
 
-[Carthage](https://github.com/Carthage/Carthage) is an alternative dependency management system that is supported via the Carthage [binary json spec](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#binary-project-specification). To install via Carthage, add a `Cartfile` to your project with these contents:
+[Carthage](https://github.com/Carthage/Carthage) is an alternative dependency management system that is supported via the [Carthage Binary JSON Spec](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#binary-project-specification). To install via Carthage, add a `Cartfile` to your project with these contents:
 
 ```sh
 binary "https://raw.githubusercontent.com/appcues/ios-sdk-releases/master/Appcues.framework.json"
@@ -117,7 +117,7 @@ and run:
 $ carthage update
 ```
 
-You can then complete the installation by following the default Carthage [setup instructions](https://github.com/Carthage/Carthage#quick-start).
+You can then complete the installation by following the default [Carthage Setup Instruction](https://github.com/Carthage/Carthage#quick-start).
 
 #### Add the SDK without a Dependency Manager
 
@@ -240,9 +240,9 @@ In general, this involves identifying a User, recording User Profile Updates tha
 
 #### Identify a User and Record User Profile Updates
 
-Users have to be identified to see Flows. To identify a User, use the `identifyUserWithId(userId:)` function. 
+Users have to be identified to see Flows. To identify a User, use the `identifyUserWithId(userId:)` function.
 
-Once a User is identified, additional properties about the User can be recorded and then sent for Flow Targeting. To record User Profile Updates, use `record(userProfileUpdate:)`. Note that this data will be saved locally in memory by the SDK, but won't be sent to Appcues until you call `sendActivities(completion:)` [Send User Activities to show Flows](Send-User-Activities-to-show-Flows) , after which it will be cleared from memory.
+Once a User is identified, additional properties about the User can be recorded and then sent for Flow Targeting. To record User Profile Updates, use `record(userProfileUpdate:)`. Note that this data will be saved locally in memory by the SDK, but won't be sent to Appcues until you call `sendActivities(completion:)` ([Send User Activities to show Flows](Send-User-Activities-to-show-Flows)), after which it will be cleared from memory.
 
 <i>Swift</i>
 
@@ -471,7 +471,7 @@ alt="Mobile Studio Add Modal Content" />
 
 To add a Tooltip Step to your Flow, click the `+` button and then select Tooltip. Hover over the Screen and select the Screen element to attach it to.
 
-You can only attach Tooltips to elements that are a part of the Screen definition - i.e. the elements you chose when [saving the screen](#Identify-a-Screen).
+You can only attach Tooltips to elements that are a part of the Screen definition - i.e. the elements you chose when [creating the Screen](#Create-a-Screen).
 
 <img
 src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_AddTooltip.gif"
@@ -518,7 +518,7 @@ Once a Flow is published, it can start showing in your App to qualified Users ba
 
 You can verify that targeting works by checking that the Flows you have created show where you expect on your Device. If your Device is logged into the SDK Editor, don't forget to select the "Enable Flows" option. Otherwise, if you are logged out of the Editor and are using the App normally, Flows will show as long as:
 
-- The App has been configured with the correct `sendActivities(completion)` calls. ([Sending User Activities to Show Flows](#Sending-User-Activities-to-Show-Flows))
+- The App has been configured with the correct `sendActivities(completion)` calls. ([Sending User Activities to Show Flows](#Send-User-Activities-to-Show-Flows))
 - You navigate to the Screen(s) that the Flow is added to.
 - The targeting rules of the Flow match the User Profile data that was sent by the App.
 
