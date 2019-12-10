@@ -94,7 +94,7 @@ $ pod init
 Add the following to your `Podfile`:
 
 ```ruby
-pod 'Appcues'
+pod "Appcues"
 ```
 
 Complete the installation by executing:
