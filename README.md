@@ -522,6 +522,8 @@ You can verify that targeting works by checking that the Flows you have created 
 - You navigate to the Screen(s) that the Flow is added to.
 - The targeting rules of the Flow match the User Profile data that was sent by the App.
 
+To make sure to see recently created flows, make sure to re-foreground the app.
+
 ### Record User Events (Optional)
 
 The targeting of your flows can be strengthened by enabling tracking of your users' behaviors and actions. Call the `record(userEvents:)` function whenever an event should be recorded. The time at which the event occurred, as well as information about the user who experienced the event, is automatically recorded.
@@ -547,6 +549,10 @@ func createAuction() {
   [Appcues.shared recordUserEvents:@[createdAuctionEvent]];
 }
 ```
+
+## FAQ
+
+For commonly asked questions, see [here](https://docs.appcues.com/article/525-faq).
 
 ## Contact
 
