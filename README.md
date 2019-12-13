@@ -91,16 +91,27 @@ Next create a `Podfile` in the root of your project directory:
 $ pod init
 ```
 
-Add the following to your `Podfile`:
+Add the following to your `Podfile` where `YourAppTarget` is replaced by your App's main target in Xcode:
 
 ```ruby
-pod "Appcues"
+target "YourAppTarget" do
+  inherit! :search_paths
+
+  # ... Your App's other dependencies
+
+  pod "Appcues"
+
+  # We always recommend you use the latest SDK version,
+  # but optionally, you can point to a specific version with:
+
+  # pod "Appcues", "0.18.4"
+end
 ```
 
 Complete the installation by executing:
 
 ```sh
-$ pod install
+$ pod update
 ```
 
 #### Add the SDK using Carthage
@@ -159,9 +170,11 @@ The following configuration of your App only needs to be done once for a success
 
 #### Create a URL Scheme
 
-In your App's `Info.plist`, make sure that the below URL scheme is added. This scheme is needed to allow you to launch the SDK Editor by entering the URL: `$(PRODUCT_NAME)://appcues` in Safari or another mobile browser.
+You will need to add a URL Scheme to your App's `Info.plist` to allow for launching the Appcues SDK Editor by entering the URL: `$(PRODUCT_NAME)://appcues` in Safari or another mobile browser. To set up the proper URL Scheme:
 
-By default we recommend you use your App's `$(PRODUCT_NAME)` for the scheme name. It is important that this name is unique for any Apps that you have installed on your Device, so please ensure that if you have multiple versions of your App installed, the name can uniquely distinguish between them.
+##### 1. Choose scheme name
+
+By default, we recommend you use your App's `$(PRODUCT_NAME)` for the scheme name. It is important that this name is unique for any Apps that you have installed on your Device, so please ensure that if you have multiple versions of your App installed, the name can uniquely distinguish between them.
 
 You can view your App's product name in your project's _Build Settings_:
 
@@ -169,12 +182,20 @@ You can view your App's product name in your project's _Build Settings_:
 src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ProductNameBuildSetting.png"
 alt="Example App PRODUCT_NAME Build Setting" />
 
-Your app's `Info.plist` should have the `URL types` entry added in this format:
+##### 2. Add new Editor URL type
+
+In your app's `Info.plist`, click the plus icons to have the `URL types` entry added in the following format where:
+
+- `Document Role` is `Editor`
+- `URL Identifier` is `com.appcues.scheme`
+- `URL Schemes` has item `${PRODUCT_NAME}`
 
 <img
 src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/InfoPListDefault.png" alt="Example Default App Info.plist" />
 
-Finally, hook the Appcues SDK into your `UIApplicationDelegate`'s `application:open:options:` function.
+##### 3. Hook the Appcues SDK into your `UIApplicationDelegate`'s `application:open:options:` function
+
+Here are some code snippets to start you off:
 
 <i>Swift</i>
 
@@ -402,6 +423,12 @@ Once you accept the launch prompt, your App will be launched with the Pair Devic
 Once your Device is paired, the Appcues SDK Editor Button will show on top of your App on the top right corner of the screen.
 
 <img src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues SDK Editor" />
+
+Note: If you encounter errors in the pairing process such as:
+
+`Error: com.company.App is not valid`
+
+This means that your app has already been authenticated with another Appcues account. From here, you can either coordinate with your team to join their account, or reach out to [support@appcues.com](mailto:support@appcues.com) for help with reassigning that app to your new account.
 
 ### Send a Snapshot to Appcues Studio
 
