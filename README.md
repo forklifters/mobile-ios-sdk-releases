@@ -541,7 +541,7 @@ alt="Mobile Studio Targeting" />
 
 ### Publish the Flow
 
-Once a Flow is published, it can start showing in your App to qualified Users based on the targeting rules you specify.
+Once a Flow is published, it will be loaded by the Appcues SDK after any user of your App re-foregrounds it.  At that point the Flow will start showing in your App to qualified Users based on the targeting rules you specify.
 
 You can verify that targeting works by checking that the Flows you have created show where you expect on your Device. If your Device is logged into the SDK Editor, don't forget to select the "Enable Flows" option. Otherwise, if you are logged out of the Editor and are using the App normally, Flows will show as long as:
 
@@ -549,7 +549,7 @@ You can verify that targeting works by checking that the Flows you have created 
 - You navigate to the Screen(s) that the Flow is added to.
 - The targeting rules of the Flow match the User Profile data that was sent by the App.
 
-To make sure to see recently created flows, make sure to re-foreground the app.
+Note: To see recently published flows, make sure to re-foreground your app after publishing it.
 
 ### Record User Events (Optional)
 
