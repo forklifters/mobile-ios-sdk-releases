@@ -9,7 +9,7 @@
 
 This repository contains binary distributions of the iOS SDK released by [Appcues](https://www.appcues.com/mobile/ios).
 
-If you have any questions, comments, or issues related to any products distributed via this repository, please contact the team by emailing [support@appcues.com](mailto:support@appcues.com).
+If you have any questions, comments, or issues related to any products distributed via this repository, please contact the team. [Contact](#Contact).
 
 ## Appcues iOS SDK
 
@@ -541,7 +541,7 @@ alt="Mobile Studio Targeting" />
 
 ### Publish the Flow
 
-Once a Flow is published, it can start showing in your App to qualified Users based on the targeting rules you specify.
+Once a Flow is published, it will be loaded by the Appcues SDK after any user of your App re-foregrounds it. At that point the Flow will start showing in your App to qualified Users based on the targeting rules you specify.
 
 You can verify that targeting works by checking that the Flows you have created show where you expect on your Device. If your Device is logged into the SDK Editor, don't forget to select the "Enable Flows" option. Otherwise, if you are logged out of the Editor and are using the App normally, Flows will show as long as:
 
@@ -549,7 +549,7 @@ You can verify that targeting works by checking that the Flows you have created 
 - You navigate to the Screen(s) that the Flow is added to.
 - The targeting rules of the Flow match the User Profile data that was sent by the App.
 
-To make sure to see recently created flows, make sure to re-foreground the app.
+Note: To see recently published flows, make sure to re-foreground your app after publishing it.
 
 ### Record User Events (Optional)
 
@@ -584,6 +584,13 @@ For commonly asked questions, see [here](https://docs.appcues.com/article/525-fa
 ## Contact
 
 You can reach the Appcues team at any time by emailing [support@appcues.com](mailto:support@appcues.com).
+
+If you are reporting a bug or have a specific question about behavior on a test device, please reproduce the issue and then provide the exact time UTC you reproduced the issue, your associated Appcues' Account ID as well as the associated iPhone's Device Name (iPhone Settings > General > About > Name).
+
+Account ID can be found in Appcues Studio Settings:
+<img
+src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_FindAccountId.gif"
+alt="Mobile Studio Find AccountId" />
 
 ## License
 
