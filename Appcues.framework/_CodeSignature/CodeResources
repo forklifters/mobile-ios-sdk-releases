@@ -6,107 +6,119 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		eFesH80Yozz4oWEkqmK58CgOrYU=
+		dWw4g94J22nO46ioyqSRfJBHd+Y=
 		</data>
 		<key>EditorContentButtonView.nib/objects-13.0+.nib</key>
 		<data>
-		UZ6kIOSIHFKSrDSSPm0x8wiBkA4=
+		wnCzGBOU+XH7fWeMa3nr966aG80=
 		</data>
 		<key>EditorContentButtonView.nib/runtime.nib</key>
 		<data>
-		z0np4UyVx7ei+6NQO1b/huROKvA=
+		BzydXsPIlxLuGFwwIezREbn+zc4=
+		</data>
+		<key>EditorContentOptionView.nib/objects-13.0+.nib</key>
+		<data>
+		xNYhf9nQ25rKAC1Bpl2tcjmYH4c=
+		</data>
+		<key>EditorContentOptionView.nib/runtime.nib</key>
+		<data>
+		p15WhaD7qHAseGSzi8rxq58xgPA=
 		</data>
 		<key>EditorContentOptionsViewController.nib/objects-13.0+.nib</key>
 		<data>
-		W9Ws7TJ2tmyIk8OmfsCHJyym0jM=
+		3YPVU2XfcWZJr8m+/PiCcM08GIM=
 		</data>
 		<key>EditorContentOptionsViewController.nib/runtime.nib</key>
 		<data>
-		mE69FxswtGB1QfL3jC4HyRyXV3E=
+		V4oPKZwTjfkeFVbYn1iD9IHXhDw=
+		</data>
+		<key>EditorContentUserConfirmationView.nib/objects-13.0+.nib</key>
+		<data>
+		JIZFy0R/oKRXOQ1P9uGU13wiYbo=
+		</data>
+		<key>EditorContentUserConfirmationView.nib/runtime.nib</key>
+		<data>
+		3cR7R6VF/2czaQCRQ83I1Ogje7M=
 		</data>
 		<key>EditorContentViewController.nib/objects-11.0+.nib</key>
 		<data>
-		tUAVRud3lH0d7rUp14p1v8ylxzQ=
+		D+Q/g4C4DZkd3nHmv1BRIknmcVQ=
 		</data>
 		<key>EditorContentViewController.nib/objects-13.0+.nib</key>
 		<data>
-		TZNA3IAJpun3fDPziYzG7BMAKIo=
+		jfLpBZWFdoUHV8/Njyi3kHHl0tk=
 		</data>
 		<key>EditorContentViewController.nib/runtime.nib</key>
 		<data>
-		q4/C4HMBDwyhOCjy/ODuUM1N55s=
+		Hr7I/nUOfNjSFJLLP4K9BZG0nZw=
 		</data>
 		<key>EditorLoginViewController.nib/objects-11.0+.nib</key>
 		<data>
-		tYRZe7AUJC/VfJzQSZ6S7wk4FmY=
+		6pV7FivFhZO7KB3Ugos/knr80h8=
 		</data>
 		<key>EditorLoginViewController.nib/objects-13.0+.nib</key>
 		<data>
-		bxr9d/M7jAzwZh90cqk6jCU1LuE=
+		GZXuPlsQzWtyMQJ5a/xDJAqFFuU=
 		</data>
 		<key>EditorLoginViewController.nib/runtime.nib</key>
 		<data>
-		hWKNy3nf68hcEBKyB4PL1goqyP4=
+		BscD0RS4nena/y3eGjdF7AG1b40=
 		</data>
 		<key>EditorRootToastView.nib/objects-13.0+.nib</key>
 		<data>
-		nwUHMJEhr9Q7A9OD30aQGNC9NBE=
+		JBOFxSWo0QK56qjWcfCJzRCmwVc=
 		</data>
 		<key>EditorRootToastView.nib/runtime.nib</key>
 		<data>
-		9W/sKJ7pyFqBn6eMy2C53Uhsu1A=
-		</data>
-		<key>EditorRootViewController.nib/objects-11.0+.nib</key>
-		<data>
-		YHtsrKovLBR0iBBodopPxyCPW6w=
+		YJRXGZsoYAb3APUMAPSqEj7bn7I=
 		</data>
 		<key>EditorRootViewController.nib/objects-13.0+.nib</key>
 		<data>
-		T/L/Ec9E6GqrUh9l6ZDCJZSTGto=
+		sym4XpvvBrRUCGVse+P68VhEyGM=
 		</data>
 		<key>EditorRootViewController.nib/runtime.nib</key>
 		<data>
-		oDMb+U+iHDuRqSxmEpSLlZLdrak=
+		WlEC5N6zw/OWDjI2ZQ5tSq9mfEs=
 		</data>
 		<key>FlowContentViewController.nib/objects-13.0+.nib</key>
 		<data>
-		zaRe+HP7cuXNOjUplLqC2FCyohc=
+		5VJ3Ki+S1MwoYhAd/NJnNxYIVRo=
 		</data>
 		<key>FlowContentViewController.nib/runtime.nib</key>
 		<data>
-		LuHrGOWr/VoO/5RWnwNLbN6js6Q=
+		GCx5aYitpCMAd59ikdz8Xifke5Q=
 		</data>
 		<key>FlowStepModalViewController.nib/objects-13.0+.nib</key>
 		<data>
-		tFgImNUwMUn/vr/pixwkPZm2zLU=
+		P5xf1Ez/iDzhGaYeEG7bddqt1oI=
 		</data>
 		<key>FlowStepModalViewController.nib/runtime.nib</key>
 		<data>
-		fPGpzdErxfxPePOZskXTeZLt7J8=
+		FWWLddSN2m0tPUIQaR4P0cjExXk=
 		</data>
 		<key>FlowStepTooltipViewController.nib/objects-13.0+.nib</key>
 		<data>
-		uU+ZvHe2R2mmx+Klcwmk2i7WAsY=
+		5duqf5s4J91vV1tFpKr8j+XHxQY=
 		</data>
 		<key>FlowStepTooltipViewController.nib/runtime.nib</key>
 		<data>
-		Ecro4MujhpU7TGSIZjcnYDWZJbc=
+		W2YdbTXKsaOZ9dSOg+jN9KED79w=
 		</data>
-		<key>Headers/ACApplicationSource.h</key>
+		<key>Headers/ACApplicationAccessor.h</key>
 		<data>
-		T4xdRjU9Ua5FnDSetrpomV5S1Fo=
+		Rnouh6f13ZE9f3Vrn9zBrFkPsZY=
 		</data>
 		<key>Headers/Appcues-Swift.h</key>
 		<data>
-		BaIq3bbzZHo14VstAQYrf7Z1LxM=
+		9BOr71Qh9Zjlosilfl+/s4e4Nog=
 		</data>
 		<key>Headers/Appcues.h</key>
 		<data>
-		XrST+FZGNjluRQMKm+9LUG3/rJo=
+		KtDxbOS5GP6sdWxYuZ9SjAog7M4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		s+cliX3TRSBU2s1rBu7rkpmDye0=
+		ZgygmwbA3XOedeoGBUWCyo7RB08=
 		</data>
 		<key>Modules/Appcues.swiftmodule/arm.swiftdoc</key>
 		<data>
@@ -114,7 +126,7 @@
 		</data>
 		<key>Modules/Appcues.swiftmodule/arm.swiftmodule</key>
 		<data>
-		vFaCBNO0+v3WbrJ+bLXVilQc0Ok=
+		hk9Y7jfrY3mz+7uz26GfAw7VHzc=
 		</data>
 		<key>Modules/Appcues.swiftmodule/arm64-apple-ios.swiftdoc</key>
 		<data>
@@ -122,7 +134,7 @@
 		</data>
 		<key>Modules/Appcues.swiftmodule/arm64-apple-ios.swiftmodule</key>
 		<data>
-		05HkE9KestJuRBQiu6MToLPskek=
+		D5A2hubNj7GtViUsKISqLTuDmko=
 		</data>
 		<key>Modules/Appcues.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -130,7 +142,7 @@
 		</data>
 		<key>Modules/Appcues.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		05HkE9KestJuRBQiu6MToLPskek=
+		D5A2hubNj7GtViUsKISqLTuDmko=
 		</data>
 		<key>Modules/Appcues.swiftmodule/armv7-apple-ios.swiftdoc</key>
 		<data>
@@ -138,7 +150,7 @@
 		</data>
 		<key>Modules/Appcues.swiftmodule/armv7-apple-ios.swiftmodule</key>
 		<data>
-		vFaCBNO0+v3WbrJ+bLXVilQc0Ok=
+		hk9Y7jfrY3mz+7uz26GfAw7VHzc=
 		</data>
 		<key>Modules/Appcues.swiftmodule/armv7.swiftdoc</key>
 		<data>
@@ -146,11 +158,11 @@
 		</data>
 		<key>Modules/Appcues.swiftmodule/armv7.swiftmodule</key>
 		<data>
-		vFaCBNO0+v3WbrJ+bLXVilQc0Ok=
+		hk9Y7jfrY3mz+7uz26GfAw7VHzc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		mPsFxHu0oedN8oycdr6NLLBf9NM=
+		UQyg2V7V3GGHRKZi0HEQyNWbqcs=
 		</data>
 		<key>Muli-Bold.ttf</key>
 		<data>
@@ -160,13 +172,17 @@
 		<data>
 		ZEPV/iwKceqB38jzGBSUX/lKv04=
 		</data>
+		<key>Muli-SemiBold.ttf</key>
+		<data>
+		liyX9UvxNRj0cBBrvNHydcKRJTI=
+		</data>
 		<key>TooltipView.nib/objects-13.0+.nib</key>
 		<data>
-		hFPoLrpKwjkPgWO+a4ib0019vC4=
+		0lnL8W5cHUOxl7+zR8HLgVsSQ/E=
 		</data>
 		<key>TooltipView.nib/runtime.nib</key>
 		<data>
-		nkCWCx9LhC8iQ0n1jNKA8BDKzEk=
+		4+2PfPjkukhFdNL43F0FRHR0jMs=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -175,275 +191,308 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			eFesH80Yozz4oWEkqmK58CgOrYU=
+			dWw4g94J22nO46ioyqSRfJBHd+Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			GPPUUKBnh/VhE/LGMCxMq3+R4gUdaKIO6szUcIFGrFU=
+			5xbqwI0x9Zsd4wA98KWWWw98fJJTrwZ9pCQXnbHADjw=
 			</data>
 		</dict>
 		<key>EditorContentButtonView.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			UZ6kIOSIHFKSrDSSPm0x8wiBkA4=
+			wnCzGBOU+XH7fWeMa3nr966aG80=
 			</data>
 			<key>hash2</key>
 			<data>
-			DDLku5FraapJhHyFnJPhYs4RJ2w6FDStNIQxRB8GtRo=
+			ccmhF/bXsYyH0bh7wtIKXskKVv3HoqymBqAqx1iYK9c=
 			</data>
 		</dict>
 		<key>EditorContentButtonView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			z0np4UyVx7ei+6NQO1b/huROKvA=
+			BzydXsPIlxLuGFwwIezREbn+zc4=
 			</data>
 			<key>hash2</key>
 			<data>
-			UfJenwr/Icv4ZwGcEz3/KhAO1uEWLHkADiOUDvI7+D4=
+			QApEDWTCfWgGViNmPd3h5QL1Us4jRLxIld1JHVPuuDA=
+			</data>
+		</dict>
+		<key>EditorContentOptionView.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			xNYhf9nQ25rKAC1Bpl2tcjmYH4c=
+			</data>
+			<key>hash2</key>
+			<data>
+			5ghQtGi8QW8T9Tb0tWfcDI4leRggDCnLkT+KxhJwV+Q=
+			</data>
+		</dict>
+		<key>EditorContentOptionView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			p15WhaD7qHAseGSzi8rxq58xgPA=
+			</data>
+			<key>hash2</key>
+			<data>
+			f5jLFD6suPVddJiKBWd0pV63KBEz30jV6ksf9ngtFSo=
 			</data>
 		</dict>
 		<key>EditorContentOptionsViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			W9Ws7TJ2tmyIk8OmfsCHJyym0jM=
+			3YPVU2XfcWZJr8m+/PiCcM08GIM=
 			</data>
 			<key>hash2</key>
 			<data>
-			DtVnRZBVXY7s1p/PtJWcp6qZWmHMiDL9B4Q73nGR1kQ=
+			Q8ph9yXKpqGIQe0QOJPvp2/N4uv4tliMGB2HIfc08t0=
 			</data>
 		</dict>
 		<key>EditorContentOptionsViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mE69FxswtGB1QfL3jC4HyRyXV3E=
+			V4oPKZwTjfkeFVbYn1iD9IHXhDw=
 			</data>
 			<key>hash2</key>
 			<data>
-			vaeLLHOJHEMDWdx/keX3O927Csg6yvCrB8am3Sz1lX0=
+			6W16URKW5HMIZ8l07ukUPtLyuCioCHnr5rnaAibc1p8=
+			</data>
+		</dict>
+		<key>EditorContentUserConfirmationView.nib/objects-13.0+.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			JIZFy0R/oKRXOQ1P9uGU13wiYbo=
+			</data>
+			<key>hash2</key>
+			<data>
+			TjH7YmwtQ8q/2gx4CuGz44QUe8Gnckcx2rcgXxD7Oow=
+			</data>
+		</dict>
+		<key>EditorContentUserConfirmationView.nib/runtime.nib</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			3cR7R6VF/2czaQCRQ83I1Ogje7M=
+			</data>
+			<key>hash2</key>
+			<data>
+			TWZgxL978VGXeDctmxavTux5tvZkSxt317dcpQ2MESw=
 			</data>
 		</dict>
 		<key>EditorContentViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tUAVRud3lH0d7rUp14p1v8ylxzQ=
+			D+Q/g4C4DZkd3nHmv1BRIknmcVQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			4OPk4BYV4OEZNldELfttqpxffaJYmyh6awAthVW8uA8=
+			118kCdOXqAsIewIyHiF+Hshk0tlCf0RT97NtRj/KoW4=
 			</data>
 		</dict>
 		<key>EditorContentViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			TZNA3IAJpun3fDPziYzG7BMAKIo=
+			jfLpBZWFdoUHV8/Njyi3kHHl0tk=
 			</data>
 			<key>hash2</key>
 			<data>
-			uOPkR4l1AAWemzLxn4jiWiaPDcoMDFkTLnKbCNWadnM=
+			ErGoZMHORPCzWc804/b7waQy4BafotKI2CPC1rU1AaU=
 			</data>
 		</dict>
 		<key>EditorContentViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			q4/C4HMBDwyhOCjy/ODuUM1N55s=
+			Hr7I/nUOfNjSFJLLP4K9BZG0nZw=
 			</data>
 			<key>hash2</key>
 			<data>
-			6ZeMALfhF3TGLEybEujSMYKIaLKWkz7cnJPpavi6ya4=
+			6bq7PRXu2MuM3nQwjY4e4lSruVafm5TIN1kv1bjRnMY=
 			</data>
 		</dict>
 		<key>EditorLoginViewController.nib/objects-11.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tYRZe7AUJC/VfJzQSZ6S7wk4FmY=
+			6pV7FivFhZO7KB3Ugos/knr80h8=
 			</data>
 			<key>hash2</key>
 			<data>
-			BpGltdA5bsG0ty3hENyjefy4L6z0j2m1pZ1MF3fcvhA=
+			enN5Y3SUAOYqOFnt+y8MweKWaazVZYJAZPfJ5dM78gE=
 			</data>
 		</dict>
 		<key>EditorLoginViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bxr9d/M7jAzwZh90cqk6jCU1LuE=
+			GZXuPlsQzWtyMQJ5a/xDJAqFFuU=
 			</data>
 			<key>hash2</key>
 			<data>
-			WQp2ivXgow8hTqGKvJ5cYlF/VV7shWVP6p11ImjBNeA=
+			pCfrZ9JbGTeCgnjzFcvzcKD2BxPu2EZkQNIU1H08Rq0=
 			</data>
 		</dict>
 		<key>EditorLoginViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hWKNy3nf68hcEBKyB4PL1goqyP4=
+			BscD0RS4nena/y3eGjdF7AG1b40=
 			</data>
 			<key>hash2</key>
 			<data>
-			THirMjPCcXeIMcVlXHo+uzfakMxQb1jHJRWgj4uxeow=
+			tkpwK53VDkl01xveDx99RrFUckhdnb4KCqrVydDzfsw=
 			</data>
 		</dict>
 		<key>EditorRootToastView.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nwUHMJEhr9Q7A9OD30aQGNC9NBE=
+			JBOFxSWo0QK56qjWcfCJzRCmwVc=
 			</data>
 			<key>hash2</key>
 			<data>
-			/5pMsA7g1FAXbkBE0++/hvyv30qd2VkXBJMq7hwxjzQ=
+			5NAVWfFbqtbvDjXROosMHCLfStug/Az3PMYvNcfd2mE=
 			</data>
 		</dict>
 		<key>EditorRootToastView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			9W/sKJ7pyFqBn6eMy2C53Uhsu1A=
+			YJRXGZsoYAb3APUMAPSqEj7bn7I=
 			</data>
 			<key>hash2</key>
 			<data>
-			FjpV19QbDlKm8GM9y+L9VbqD6FPQKG2wT//wSa3nE6M=
-			</data>
-		</dict>
-		<key>EditorRootViewController.nib/objects-11.0+.nib</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			YHtsrKovLBR0iBBodopPxyCPW6w=
-			</data>
-			<key>hash2</key>
-			<data>
-			nYjLu6U2N8cGAcfC5rH8d9bZdcODcq3mhBKkBegAPbI=
+			KNkCV0mPbpmyo5gSdjkQBZaCcoCzrapTTEiCzDXURos=
 			</data>
 		</dict>
 		<key>EditorRootViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			T/L/Ec9E6GqrUh9l6ZDCJZSTGto=
+			sym4XpvvBrRUCGVse+P68VhEyGM=
 			</data>
 			<key>hash2</key>
 			<data>
-			dsfBneWdUHOlETpxyElm57JpoFwPF02BBq7zjqmZyJU=
+			/3vixxbMyFCRiRa5pBQrmhfsg5lSl2yD9Vn62ucwNxg=
 			</data>
 		</dict>
 		<key>EditorRootViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			oDMb+U+iHDuRqSxmEpSLlZLdrak=
+			WlEC5N6zw/OWDjI2ZQ5tSq9mfEs=
 			</data>
 			<key>hash2</key>
 			<data>
-			aTe60thvDP4XZPlNJntoamie4pTfIziwHKg+DKihPq4=
+			mwGeoeCzwsU63XvYdscGplHnr3aAFotNksvrsUZLaD8=
 			</data>
 		</dict>
 		<key>FlowContentViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			zaRe+HP7cuXNOjUplLqC2FCyohc=
+			5VJ3Ki+S1MwoYhAd/NJnNxYIVRo=
 			</data>
 			<key>hash2</key>
 			<data>
-			n2ZwhpQwD5U0NWCeZdOxGPOhoNBNC/YT2/LjEcktxfY=
+			zq+cm0MLjiBR/eBJm05s4EEXJhMVxgCwKGROzpRrHXY=
 			</data>
 		</dict>
 		<key>FlowContentViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			LuHrGOWr/VoO/5RWnwNLbN6js6Q=
+			GCx5aYitpCMAd59ikdz8Xifke5Q=
 			</data>
 			<key>hash2</key>
 			<data>
-			tLGW3TQDjXvPVtxgUdcxJvBxQV3C1Fr0dyrNkVR223c=
+			YMTGqYA7+FBasqOQkumgTQ7AJBpDlhwmAQCnjFY3kA4=
 			</data>
 		</dict>
 		<key>FlowStepModalViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tFgImNUwMUn/vr/pixwkPZm2zLU=
+			P5xf1Ez/iDzhGaYeEG7bddqt1oI=
 			</data>
 			<key>hash2</key>
 			<data>
-			kL8jqgw0A4UmzthXOhVQ8Vrqnt4mB6RXYJqqnsctcJg=
+			xYQHyN0fHLIZAS64HG6f+Zjp88vhvFb7uBJ5QnQJh/8=
 			</data>
 		</dict>
 		<key>FlowStepModalViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fPGpzdErxfxPePOZskXTeZLt7J8=
+			FWWLddSN2m0tPUIQaR4P0cjExXk=
 			</data>
 			<key>hash2</key>
 			<data>
-			QDefb2WpcXMre8F2jksU9Qhhf7C8/ty6UnVer/GT2qQ=
+			pRTE+bUfxa7mty2AOEbpoH9RlTwU/L4OxL9Z1mzkukA=
 			</data>
 		</dict>
 		<key>FlowStepTooltipViewController.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			uU+ZvHe2R2mmx+Klcwmk2i7WAsY=
+			5duqf5s4J91vV1tFpKr8j+XHxQY=
 			</data>
 			<key>hash2</key>
 			<data>
-			n0+6+jVumLhn8P312U9Tv7WLdPJOMpl3GVrZ+Snc/Hs=
+			L8/mDVaeQ81PEB5zRSkQScTWMfFd6ZsOEIN2Qh2ZzzM=
 			</data>
 		</dict>
 		<key>FlowStepTooltipViewController.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			Ecro4MujhpU7TGSIZjcnYDWZJbc=
+			W2YdbTXKsaOZ9dSOg+jN9KED79w=
 			</data>
 			<key>hash2</key>
 			<data>
-			h5uSkLBSYLZ7bLUeGRZtYBnkRQhPDN+ZItDcvjrSyGE=
+			Fov6y70A+YJnyCd+92UdEyHe27EyVXf/Kb0DznihTU0=
 			</data>
 		</dict>
-		<key>Headers/ACApplicationSource.h</key>
+		<key>Headers/ACApplicationAccessor.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			T4xdRjU9Ua5FnDSetrpomV5S1Fo=
+			Rnouh6f13ZE9f3Vrn9zBrFkPsZY=
 			</data>
 			<key>hash2</key>
 			<data>
-			leUXe718YyMSYGI9Ym7XJyP8IGEvG3OD+HiW6L0IslE=
+			ztM8hnRcNCYytszdqrHBrMro/HkgfSQmLYVwjb2gPls=
 			</data>
 		</dict>
 		<key>Headers/Appcues-Swift.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			BaIq3bbzZHo14VstAQYrf7Z1LxM=
+			9BOr71Qh9Zjlosilfl+/s4e4Nog=
 			</data>
 			<key>hash2</key>
 			<data>
-			4f7IEoQBnS9xUh69EC0GLI+IZxOoxKZz1A59dNbKwWM=
+			SCqR3/Sm3AOTPAoEiDbSDXz99TFA6ZM2d7hcKs3XMC4=
 			</data>
 		</dict>
 		<key>Headers/Appcues.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XrST+FZGNjluRQMKm+9LUG3/rJo=
+			KtDxbOS5GP6sdWxYuZ9SjAog7M4=
 			</data>
 			<key>hash2</key>
 			<data>
-			en0WQmSNSQC0cJ51pKcQQygqMX1Jyya4Pb8l97dZrAg=
+			bLEWPe7tWMDXp5xkWzb11KaZMmHeOFWBbZugRUciUAY=
 			</data>
 		</dict>
 		<key>Modules/Appcues.swiftmodule/arm.swiftdoc</key>
@@ -461,11 +510,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vFaCBNO0+v3WbrJ+bLXVilQc0Ok=
+			hk9Y7jfrY3mz+7uz26GfAw7VHzc=
 			</data>
 			<key>hash2</key>
 			<data>
-			HxLA78NiPysV/mRAcbdp9ILyliCZqHPcYSGCVJxUeck=
+			/8DM7OztUwJylX2zODJpGM/K6/z89Ahgg+dP68KzbwY=
 			</data>
 		</dict>
 		<key>Modules/Appcues.swiftmodule/arm64-apple-ios.swiftdoc</key>
@@ -483,11 +532,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			05HkE9KestJuRBQiu6MToLPskek=
+			D5A2hubNj7GtViUsKISqLTuDmko=
 			</data>
 			<key>hash2</key>
 			<data>
-			esJYl0Vc5tOWcaqWCmr+cqzOjcX1mCxl45ruOxXjbQg=
+			xF5DLTSFmReWBDOqXnHEHreVzREHnukgvqMIThjTV3M=
 			</data>
 		</dict>
 		<key>Modules/Appcues.swiftmodule/arm64.swiftdoc</key>
@@ -505,11 +554,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			05HkE9KestJuRBQiu6MToLPskek=
+			D5A2hubNj7GtViUsKISqLTuDmko=
 			</data>
 			<key>hash2</key>
 			<data>
-			esJYl0Vc5tOWcaqWCmr+cqzOjcX1mCxl45ruOxXjbQg=
+			xF5DLTSFmReWBDOqXnHEHreVzREHnukgvqMIThjTV3M=
 			</data>
 		</dict>
 		<key>Modules/Appcues.swiftmodule/armv7-apple-ios.swiftdoc</key>
@@ -527,11 +576,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vFaCBNO0+v3WbrJ+bLXVilQc0Ok=
+			hk9Y7jfrY3mz+7uz26GfAw7VHzc=
 			</data>
 			<key>hash2</key>
 			<data>
-			HxLA78NiPysV/mRAcbdp9ILyliCZqHPcYSGCVJxUeck=
+			/8DM7OztUwJylX2zODJpGM/K6/z89Ahgg+dP68KzbwY=
 			</data>
 		</dict>
 		<key>Modules/Appcues.swiftmodule/armv7.swiftdoc</key>
@@ -549,22 +598,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vFaCBNO0+v3WbrJ+bLXVilQc0Ok=
+			hk9Y7jfrY3mz+7uz26GfAw7VHzc=
 			</data>
 			<key>hash2</key>
 			<data>
-			HxLA78NiPysV/mRAcbdp9ILyliCZqHPcYSGCVJxUeck=
+			/8DM7OztUwJylX2zODJpGM/K6/z89Ahgg+dP68KzbwY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			mPsFxHu0oedN8oycdr6NLLBf9NM=
+			UQyg2V7V3GGHRKZi0HEQyNWbqcs=
 			</data>
 			<key>hash2</key>
 			<data>
-			NYJo35zkJK4EgdFcVuvr6T+roZscHOpL3YNozyxRz6Q=
+			3OK8KG4nk6QpQHneTObFJiumTZp8DoPKHjT60ePBphY=
 			</data>
 		</dict>
 		<key>Muli-Bold.ttf</key>
@@ -589,26 +638,37 @@
 			/u0dWA1Pz4dq/+eLxCsG9qIe/LIaNnXe6LejcztZUKM=
 			</data>
 		</dict>
+		<key>Muli-SemiBold.ttf</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			liyX9UvxNRj0cBBrvNHydcKRJTI=
+			</data>
+			<key>hash2</key>
+			<data>
+			KF8mMsLx+AkxGM4TWDS7Edl3ALtBbXWFmWm4P5+rFR8=
+			</data>
+		</dict>
 		<key>TooltipView.nib/objects-13.0+.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			hFPoLrpKwjkPgWO+a4ib0019vC4=
+			0lnL8W5cHUOxl7+zR8HLgVsSQ/E=
 			</data>
 			<key>hash2</key>
 			<data>
-			ryIwK2m3abjTjliungOPAiVUYjG23VCv1VzbtRcCEOI=
+			/l6lSPG/fTCx50TkZtPHDnr/9mQ2nPXepNA0jsO6rwE=
 			</data>
 		</dict>
 		<key>TooltipView.nib/runtime.nib</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nkCWCx9LhC8iQ0n1jNKA8BDKzEk=
+			4+2PfPjkukhFdNL43F0FRHR0jMs=
 			</data>
 			<key>hash2</key>
 			<data>
-			GQNJdB6WyuGgDEL+Fqp1BrTQIKKJZIztCBt4SsTc3j0=
+			rnITh4XlaMfeZTqE7dTfzhXAUFDCyyhIdvi9mX0e/Rg=
 			</data>
 		</dict>
 	</dict>

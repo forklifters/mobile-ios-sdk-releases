@@ -68,7 +68,8 @@ End-to-end integration of the SDK into your app involves these steps:
 
 The following steps are optional:
 
-7. [Record User Events](#Record-User-Events-Optional)
+10. [Record User Events](#Record-User-Events-Optional)
+11. [Implement Deep Linking](#Implement-Deep-Linking-Optional)
 
 ## Add the SDK as a Dependency of your App
 
@@ -574,6 +575,39 @@ func createAuction() {
 - (void)createAuction {
   AppcuesEvent *createdAuctionEvent = [[AppcuesEvent alloc] initWithName:@"Created auction" attributes:@{}];
   [Appcues.shared recordUserEvents:@[createdAuctionEvent]];
+}
+```
+
+### Implement Deep Linking (Optional)
+
+The Appcues SDK supports redirects to other screens in your app once a flow completes.
+
+When a flow completes, the Appcues SDK delegates to
+the [UIApplicationDelegates](https://developer.apple.com/documentation/uikit/uiapplicationdelegate) instance method `application(\_:open:options:)` and it's here the redirect logic should be implemented.
+
+<i>Swift</i>
+
+```swift
+func application(_ app: UIApplication,
+                open url: URL,
+                options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+
+  let yourAppHandlesTheURL = ... // Your App's URL handling code here
+  let appcuesHandlesTheURL = Appcues.shared.application(app, openURL: url, options: options)
+
+  return yourAppHandlesTheURL || appcuesHandlesTheURL
+}
+```
+
+<i>Objective-C</i>
+
+```objective-c
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options {
+
+  BOOL yourAppHandlesTheURL = ... // Your App's URL handling code here
+  BOOL appcuesHandlesTheURL = [Appcues.shared application:app openURL:url options:options];
+
+  return yourAppHandlesTheURL || appcuesHandlesTheURL
 }
 ```
 
