@@ -226,7 +226,8 @@ func application(_ app: UIApplication,
 
 #### Initialize the SDK
 
-In your `UIApplicationDelegate`, initialize the SDK by calling `Appcues.shared.setup()` at the end of the `application(_:didFinishLaunchingWithOptions:)` function.
+In your `UIApplicationDelegate`, initialize the SDK by calling `Appcues.setup(apiKey:)` at the end of the `application(_:didFinishLaunchingWithOptions:)` function. Ensure this is done before any access to the SDK via `Appcues.shared`. Your API Key can be found under the `Account API keys` section on
+https://studio.appcues.com/settings/account
 
 <i>Swift</i>
 
@@ -235,7 +236,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   // Your App's initialization code here
 
-  Appcues.shared.setup()
+  Appcues.setup(apiKey: "your-api-key-here")
 
   return true
 }
@@ -248,7 +249,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   // Your App's initialization code here
 
-  [Appcues.shared setup];
+  [Appcues setupWithAPIKey: @"your-api-key-here"];
 
   return YES;
 }

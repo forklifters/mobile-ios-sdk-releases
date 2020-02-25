@@ -49,18 +49,19 @@ NS_ASSUME_NONNULL_BEGIN
 NS_SWIFT_NAME(shared);
 
 /*!
- Performs initial setup of the Appcues SDK.
+ Performs initial setup of the Appcues SDK & returns a singleton instance.
 
  @pre `Appcues` SDK integration requires calling this method in your `UIApplicationDelegate` as follows:
  ```
  func applicationDidFinishLaunching(_ application: UIApplication) {
-   Appcues.shared.setup()
-   // your application's code here
+ Appcues.setup(apiKey: "your-api-key-here")
+ // your application's code here
  }
  ```
+ @param apiKey The api key listed on the https://studio.appcues.com/settings/account page of your Appcues account.
  */
-- (void)setup
-NS_SWIFT_NAME(setup());
++ (Appcues *)setupWithAPIKey:(NSString *)apiKey
+NS_SWIFT_NAME(setup(apiKey:));
 
 /*!
  Used to allow `Appcues` to hook into the `UIApplicationDelegate`'s `application:open:options:` method.
