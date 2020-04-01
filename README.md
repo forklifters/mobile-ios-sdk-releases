@@ -15,23 +15,23 @@ If you have any questions, comments, or issues related to any products distribut
 
 The Appcues iOS SDK is an iOS Framework that is compatible with Objective-C and Swift projects that target **iOS 10** and higher.
 
-The SDK & Appcues Studio (https://studio.appcues.com) can be used together to build, edit, publish, and target Flows that show to Users of your App.
+The SDK & Appcues Studio can be used together to build, edit, publish, and target Flows that show to Users of your App.
 
-After performing a one time installation of the SDK into your App, you can use the SDK to send Snapshots of your App to Appcues Studio (https://studio.appcues.com). There you can use the Snapshots to create Screens that define specific parts of your App that you can build Flows on. These Flows can then be targeted to specific Users of your App & updated at any time, without submitting App updates to the App Store.
+After performing a one time installation of the SDK into your App, you can use the SDK to send Snapshots of your App to Appcues Studio. There you can use the Snapshots to create Screens that define specific parts of your App that you can build Flows on. These Flows can then be targeted to specific Users of your App & updated at any time, without submitting App updates to the App Store.
 
 Before installing the SDK, make sure to:
 
-1. Sign in to or create an Appcues account on https://studio.appcues.com
+1. Create a mobile Appcues account by contacting sales@appcues.com
 
-2. Navigate to Mobile App:
+2. Navigate to your Mobile Studio account:
 
-   <img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_Toggle_MobileApp.gif" alt="Install Framework" />
+   <img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/MobileStudio_Flows_Page.png" alt="Mobile Studio Flows Page" />
 
 End-to-end integration of the SDK into your app involves these steps:
 
-1. [Add the SDK as a Dependency of your App](#Adding-the-SDK-as-a-Dependency-of-your-App)
+1. [Add the SDK as a Dependency of your App](#Add-the-SDK-as-a-Dependency-of-your-App)
 
-   - [Add the SDK using CocoaPods](#Add-the-SDK-using-Cocoapods)
+   - [Add the SDK using CocoaPods](#Add-the-SDK-using-CocoaPods)
    - [Add the SDK using Carthage](#Add-the-SDK-using-Carthage)
    - [Add the SDK without a Dependency Manager](#Add-the-SDK-without-a-Dependency-Manager)
 
@@ -49,10 +49,7 @@ End-to-end integration of the SDK into your app involves these steps:
 
 4. [Launch the Appcues SDK Editor](#Launch-the-Appcues-SDK-Editor)
 
-   - [Get a Pass Code from Appcues Studio](#Get-a-Pass-Code-from-Appcues-Studio)
-   - [Log in to the SDK Editor](#Log-in-to-the-SDK-Editor)
-
-5. [Send a Snapshot to Appcues Studio](#Send-a-Snapshot-to-Appcues-Studio)
+5. [Upload a Screen to Appcues Studio](#Upload-a-Screen-to-Appcues-Studio)
 
 6. [Create a Screen](#Create-a-Screen)
 
@@ -171,17 +168,21 @@ The following configuration of your App only needs to be done once for a success
 
 #### Create a URL Scheme
 
-You will need to add a URL Scheme to your App's `Info.plist` to allow for launching the Appcues SDK Editor by entering the URL: `$(PRODUCT_NAME)://appcues` in Safari or another mobile browser. To set up the proper URL Scheme:
+You will need to add a URL Scheme to your App's `Info.plist` to allow for launching the Appcues SDK Editor in Safari or another mobile browser.
 
-##### 1. Choose scheme name
+##### 1. Find URL Scheme
 
-By default, we recommend you use your App's `$(PRODUCT_NAME)` for the scheme name. It is important that this name is unique for any Apps that you have installed on your Device, so please ensure that if you have multiple versions of your App installed, the name can uniquely distinguish between them.
+To find your URL Scheme item, go to the "Mobile IDs" section in [Appcues Studio](https://studio.appcues.com/settings/account). If you have already claimed an id, you'll find your App Bundle Id and the corresponding Mobile Id in this section.
 
-You can view your App's product name in your project's _Build Settings_:
+If you have not yet paired a device for your app, you'll find the Mobile Id under "Unclaimed Mobile ID".
 
 <img
-src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/ProductNameBuildSetting.png"
-alt="Example App PRODUCT_NAME Build Setting" />
+src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/Studio_MobileIds.png" alt="Example Mobile Ids" />
+
+Your URL Scheme consists of a Mobile Id with an `appcues-` prefix.
+
+From the example above, your URL Scheme for an unclaimed app would be:
+appcues-c9fbbfa0-279c-490d-9cd8-eccdf2558635
 
 ##### 2. Add new Editor URL type
 
@@ -189,10 +190,10 @@ In your app's `Info.plist`, click the plus icons to have the `URL types` entry a
 
 - `Document Role` is `Editor`
 - `URL Identifier` is `com.appcues.scheme`
-- `URL Schemes` has item `${PRODUCT_NAME}`
+- `URL Schemes` has item found in the step above.
 
 <img
-src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/InfoPListDefault.png" alt="Example Default App Info.plist" />
+src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/URLSchemeAPIKey.png" alt="Example Default App Info.plist" />
 
 ##### 3. Hook the Appcues SDK into your `UIApplicationDelegate`'s `application:open:options:` function
 
@@ -226,7 +227,9 @@ func application(_ app: UIApplication,
 
 #### Initialize the SDK
 
-In your `UIApplicationDelegate`, initialize the SDK by calling `Appcues.setup(apiKey:)` at the end of the `application(_:didFinishLaunchingWithOptions:)` function. Ensure this is done before any access to the SDK via `Appcues.shared`. Your API Key can be found under the `Account API keys` section on
+In your `UIApplicationDelegate`, initialize the SDK by calling `Appcues.setup(mobileId:)` at the end of the `application(_:didFinishLaunchingWithOptions:)` function. Ensure this is done before any access to the SDK via `Appcues.shared`.
+
+Your Mobile Id can be found under the `Mobile IDs` section on
 https://studio.appcues.com/settings/account
 
 <i>Swift</i>
@@ -236,7 +239,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   // Your App's initialization code here
 
-  Appcues.setup(apiKey: "your-api-key-here")
+  Appcues.setup(mobileId: "your-mobile-id-here")
 
   return true
 }
@@ -249,7 +252,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   // Your App's initialization code here
 
-  [Appcues setupWithAPIKey: @"your-api-key-here"];
+  [Appcues setupWithMobileId: @"your-mobile-id-here"];
 
   return YES;
 }
@@ -277,7 +280,7 @@ func application(
 
   // Your App's initialization code here
 
-  Appcues.shared.setup()
+  Appcues.setup(mobileId: "your-mobile-id-here")
 
   let userId = "TestUser1"
   let customProperties = ["name": user.name, "email": user.email]
@@ -296,7 +299,7 @@ func application(
 
   // Your App's initialization code here
 
-  [Appcues.shared setup];
+  [Appcues setupWithMobileId: @"your-mobile-id-here"];
 
   NSString *userId = "TestUser1"
   NSDictionary *customProperties = @{ @"name": user.name, @"email": user.email };
@@ -322,7 +325,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   // Your own app's initialization code here
 
-  Appcues.shared.setup()
+  Appcues.setup(mobileId: "your-mobile-id-here")
 
   let customProperties = ["name": "TestName", "email": "testemail@email.com"]
   let userProfileUpdate = AppcuesUserProfileUpdate(customProperties: customProperties)
@@ -341,7 +344,7 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
   // Your own app's initialization code here
 
-  [Appcues.shared setup];
+  [Appcues setupWithMobileId: @"your-mobile-id-here"];
 
   NSDictionary *customProperties = @{ @"name": "TestName", @"email": @"testemail@email.com" };
   AppcuesUserProfileUpdate *userProfileUpdate =
@@ -370,7 +373,9 @@ Once a User is identified, the SDK automatically sends some User Properties to t
 
 You App will need to call the `sendActivities(completion:)` function any time you want to upload User Profile data previously recorded with `record(userProfileUpdate:)` or `record(userEvents:)` to Appcues and have qualified Flows show in response.
 
-We recommend you do this when you know your App's UI is ready to show Flows and you have recorded User Profile properties relevant for the Flow. For example, you can make this call on the `viewDidAppear` life-cycle function of `UIViewController`s in your App:
+We recommend you do this when you know your App's UI is ready to show Flows and you have recorded User Profile properties relevant for the Flow. Make sure to not make the `sendActivities(completion:)` call to early before all the UI elements have been laid out, otherwise Appcues can not guarantee that the screen targeting would qualify and expected flows might not appear.
+
+For example, you can make this call on the `viewDidAppear` life-cycle function of `UIViewController`s in your App:
 
 <i>Swift</i>
 
@@ -396,43 +401,13 @@ override func viewDidAppear(_ animated: Bool) {
 
 To create Flows on Appcues Studio, you have to first define the Screens that describe specific UI portions of your App which you can show Flows on.
 
-To create these Screens, you use the SDK Editor to take a Snapshot of your App, so that you can describe what parts of the UI identify the Screen. To access the SDK Editor take these steps:
+To create these Screens, you use the SDK Editor to take a Snapshot of your App, so that you can describe what parts of the UI identify the Screen.
 
-#### Get a Pass Code from Appcues Studio
+To access the SDK Editor take the steps [here](https://docs.appcues.com/article/675-pairing).
 
-Log into https://studio.appcues.com/mobile and generate a Pass Code. This code will be used to pair your Device to your Appcues Studio Account.
+If you encounter errors in the pairing process, please check out our [FAQ](#FAQ).
 
-<img
-src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_Get_Totp.gif"
-alt="Get a Pass Code from Appcues Studio" />
-
-#### Log in to the SDK Editor
-
-Launch the SDK Editor within your app by entering the URL `$(PRODUCT_NAME)://appcues` in Safari:
-
-<img
-src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/SafariURLEntry.png"
-alt="Safari URL Entry" />
-
-<img
-src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/SafariAppLaunchPrompt.png"
-alt="Safari App Launch Prompt" />
-
-Once you accept the launch prompt, your App will be launched with the Pair Device screen. Type in the Pass Code and select _Pair Device_.
-
-<img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileSDK_LoginScreen.png" alt="Appcues SDK Editor Login" />
-
-Once your Device is paired, the Appcues SDK Editor Button will show on top of your App on the top right corner of the screen.
-
-<img src="https://s3-us-west-2.amazonaws.com/appcues-public/mobile/readme+assets/AppcuesMobileSDKEditor.png" alt="Appcues SDK Editor" />
-
-Note: If you encounter errors in the pairing process such as:
-
-`Error: com.company.App is not valid`
-
-This means that your app has already been authenticated with another Appcues account. From here, you can either coordinate with your team to join their account, or reach out to [support@appcues.com](mailto:support@appcues.com) for help with reassigning that app to your new account.
-
-### Send a Snapshot to Appcues Studio
+### Upload a Screen to Appcues Studio
 
 After the SDK Editor is launched, Snapshots of your App can be sent to Appcues Studio from which you can define your App's Screens.
 
@@ -440,11 +415,11 @@ We recommend that you use a real iOS Device that is supported by your App to do 
 
 In Appcues Studio, select Upload Screen:
 
-<img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_UploadSnapshot.gif" alt="Appcues SDK Editor Upload Snapshot" />
+<img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/MobileStudio_UploadScreen.gif" alt="Mobile Studio Upload Screen" />
 
-Following the instructions on Appcues Studio, tap the Appcues SDK Editor Button and then select the option to _Send Snapshot_ when prompted.
+Following the instructions on Appcues Studio, tap the Appcues SDK Editor Button and then select the option to _Send Screen_ when prompted.
 
-<img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileEditor_Send_Snapshot.gif" alt="Appcues SDK Editor Send Snapshot" />
+<img src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/readme+assets/AuthoringMode_Menu.png" alt="Authoring Mode Menu" />
 
 Once a Snapshot is uploaded to Appcues Studio, you can use it to create a uniquely identified Screen.
 
@@ -477,6 +452,8 @@ Before saving the Screen, don't forget to choose a meaningful name for it:
 <img
 src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_NameScreen.gif"
 alt="Mobile Studio Save Screen" />
+
+Once a Screen is defined, you can test that the screen targeting works by going to the screen on your device, tap the SDK Editor Button and select Screen match. If the elements you selected for your Screen is visible on the device, the name of the Screen should appear in this list.
 
 ### Add a Flow to the Screen
 
@@ -532,6 +509,8 @@ Step styling is set individually per Step, and includes:
 <img
 src="https://appcues-public.s3-us-west-2.amazonaws.com/mobile/assets/MobileStudio_Styling.png"
 alt="Mobile Studio Styling" />
+
+Once a Flow has been created, you can preview the flow on your device by tapping the SDK Editor Button and select Preview flow. A list will appear with all flows that would show for that specific Screen on your device. The list shows flows without user and event targeting.
 
 ### Target the Flow to Users
 

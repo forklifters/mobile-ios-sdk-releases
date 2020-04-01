@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = "Appcues"
-  s.version = "0.23.2"
+  s.version = "1.0.0"
   s.summary = "The Appcues iOS SDK enables you to build, publish and test onboarding flows without" \
               " submitting to the App Store"
   s.platform = :ios, "10.0"

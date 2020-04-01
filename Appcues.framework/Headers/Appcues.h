@@ -54,14 +54,14 @@ NS_SWIFT_NAME(shared);
  @pre `Appcues` SDK integration requires calling this method in your `UIApplicationDelegate` as follows:
  ```
  func applicationDidFinishLaunching(_ application: UIApplication) {
- Appcues.setup(apiKey: "your-api-key-here")
+ Appcues.setup(mobileId: "your-mobile-id-here")
  // your application's code here
  }
  ```
- @param apiKey The api key listed on the https://studio.appcues.com/settings/account page of your Appcues account.
+ @param mobileId The mobile id listed on the https://studio.appcues.com/settings/account page of your Appcues account.
  */
-+ (Appcues *)setupWithAPIKey:(NSString *)apiKey
-NS_SWIFT_NAME(setup(apiKey:));
++ (Appcues *)setupWithMobileId:(NSString *)mobileId
+NS_SWIFT_NAME(setup(mobileId:));
 
 /*!
  Used to allow `Appcues` to hook into the `UIApplicationDelegate`'s `application:open:options:` method.
